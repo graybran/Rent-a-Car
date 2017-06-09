@@ -7,6 +7,7 @@ package core;
 
 public class Vehicle
 {
+    private int ID;
     private int year;
     private String make;
     private String model;
@@ -15,6 +16,23 @@ public class Vehicle
     private boolean availability;
     private double dailyPrice;
 
+    
+    /**
+     * @return the ID
+     */
+    public int getID()
+    {
+        return ID;
+    }
+
+    /**
+     * @param year the ID to set
+     */
+    public void setID(int ID)
+    {
+        this.ID = ID;
+    }
+    
     /**
      * @return the year
      */

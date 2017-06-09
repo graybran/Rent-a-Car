@@ -33,15 +33,15 @@ public class addInventoryUI extends javax.swing.JPanel
         {
             
             //See newRentalUI for more info (Same concepts applied)
-            Car car = new Car();
-            car.make = makeField.getText();
-            car.year = yearField.getText();
-            car.model = modelField.getText();
-            car.carClass = classField.getText();
-            car.ID = Integer.toString(6); //Hardcoded ID
+            Vehicle vehicle = new Vehicle();
+            vehicle.setMake(makeField.getText());
+            vehicle.setYear(Integer.parseInt(yearField.getText()));
+            vehicle.setModel(modelField.getText());
+            vehicle.setCarClass(classField.getText());
+            vehicle.setID(6); //Hardcoded ID
             
             Rental rTemp = new Rental();
-            rTemp.car = car;
+            rTemp.vehicle = vehicle;
             rTemp.customer = null;
             Rentacar.DBupdater(rTemp, 6); //6 is hardcoded ID
             
@@ -49,10 +49,10 @@ public class addInventoryUI extends javax.swing.JPanel
             Rental rtemp2 = Rentacar.DBgetter(6);
             System.out.println();
             System.out.println("Car Information");
-            System.out.println("ID: " + rtemp2.car.ID);
-            System.out.println("Make: " + rtemp2.car.make);
-            System.out.println("Model: " + rtemp2.car.model);
-            System.out.println("Year: " + rtemp2.car.year);
+            System.out.println("ID: " + rtemp2.vehicle.getID());
+            System.out.println("Make: " + rtemp2.vehicle.getMake());
+            System.out.println("Model: " + rtemp2.vehicle.getModel());
+            System.out.println("Year: " + rtemp2.vehicle.getYear());
             
         } 
         else 

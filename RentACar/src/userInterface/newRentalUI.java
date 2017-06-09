@@ -33,10 +33,10 @@ public class newRentalUI extends javax.swing.JPanel
             //Stores customer information from text fields
             //Search functionality isn't setup so I hardcoded a car choice there
             Customer cTemp = new Customer();
-            cTemp.age = ageField.getText();
-            cTemp.emailAddress = emailField.getText();
-            cTemp.firstName = firstNameField.getText();
-            cTemp.lastName = lastNameField.getText();
+            cTemp.setAge(Integer.parseInt(ageField.getText()));
+            cTemp.setEmailAddress(emailField.getText());
+            cTemp.setFirstName(firstNameField.getText());
+            cTemp.setLastName(lastNameField.getText());
             //String car = carField.getText();
             //Integer ID = Integer.parseInt(car);
             
@@ -48,16 +48,16 @@ public class newRentalUI extends javax.swing.JPanel
             //Prints to debug window (No where in GUI)
             Rental rtemp2 = Rentacar.DBgetter(1);
             System.out.println("Customer Information");
-            System.out.println("First: " + rtemp2.customer.firstName);
-            System.out.println("Last: " + rtemp2.customer.lastName);
-            System.out.println("Age: " + rtemp2.customer.age);
-            System.out.println("Email: " + rtemp2.customer.emailAddress);
+            System.out.println("First: " + rtemp2.customer.getFirstName());
+            System.out.println("Last: " + rtemp2.customer.getLastName());
+            System.out.println("Age: " + rtemp2.customer.getAge());
+            System.out.println("Email: " + rtemp2.customer.getEmailAddress());
             System.out.println();
             System.out.println("Car Information");
-            System.out.println("ID: " + rtemp2.car.ID);
-            System.out.println("Make: " + rtemp2.car.make);
-            System.out.println("Model: " + rtemp2.car.model);
-            System.out.println("Year: " + rtemp2.car.year);
+            System.out.println("ID: " + rtemp2.vehicle.getID());
+            System.out.println("Make: " + rtemp2.vehicle.getMake());
+            System.out.println("Model: " + rtemp2.vehicle.getModel());
+            System.out.println("Year: " + rtemp2.vehicle.getYear());
             
         }
         else 

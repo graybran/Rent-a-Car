@@ -26,14 +26,14 @@ public class fakeDatabase
         int i=0;
         Scanner in = new Scanner(new File("Starter DB.txt"));
         while(in.hasNextLine()){
-           Car car = new Car();
-           car.year =  in.nextLine();
-           car.make = in.nextLine();
-           car.model = in.nextLine();
-           car.carClass = in.nextLine();
-           car.ID = Integer.toString(i);
+           Vehicle vehicle = new Vehicle();
+           vehicle.setYear(Integer.parseInt(in.nextLine()));
+           vehicle.setMake(in.nextLine());
+           vehicle.setModel(in.nextLine());
+           vehicle.setCarClass(in.nextLine());
+           vehicle.setID(i);
            Rental rental = new Rental();
-           rental.car = car;
+           rental.vehicle = vehicle;
            rental.customer = null;
            rentals.put(i, rental);
            i++;
