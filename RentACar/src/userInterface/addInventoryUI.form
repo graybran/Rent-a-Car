@@ -41,26 +41,32 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="classField" pref="137" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="vinLabel" min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="vinField" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="milesLabel" min="-2" pref="46" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="milesField" pref="137" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="gasLabel" min="-2" pref="46" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="gasField" pref="137" max="32767" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="amtAvailLabel" min="-2" pref="96" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="amtAvailLabel" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="gasLabel" min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="amtAvailField" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="gasField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="amtAvailField" alignment="1" pref="100" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="yearLabel" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="yearField" max="32767" attributes="0"/>
+                      <Component id="yearField" pref="137" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="maintLabel" min="-2" pref="96" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -97,39 +103,40 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="modelLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="modelField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="classLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="classField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="colorLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="colorField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="milesLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="milesField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="gasLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="gasField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gasLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="classLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="classField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="colorLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="colorField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="milesLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="milesField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="vinLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="vinField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="notesLabel" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="notesScroll" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="notesScroll" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -213,6 +220,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="amtAvailField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="vinField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="vinLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="VIN"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

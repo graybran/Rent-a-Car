@@ -27,7 +27,7 @@ public class RentacarUI extends javax.swing.JFrame
         returnButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        newMenu = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         rentalsMenu = new javax.swing.JMenu();
         newRentalMenu = new javax.swing.JMenuItem();
         newReturnRentalMenu = new javax.swing.JMenuItem();
@@ -67,10 +67,17 @@ public class RentacarUI extends javax.swing.JFrame
             }
         });
 
-        fileMenu.setText("File");
+        fileMenu.setText("Employees");
 
-        newMenu.setText("New...");
-        fileMenu.add(newMenu);
+        jMenuItem7.setText("New Employee...");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem7);
 
         menuBar.add(fileMenu);
 
@@ -117,6 +124,13 @@ public class RentacarUI extends javax.swing.JFrame
         customerDataMenu.setText("Customer Data");
 
         jMenuItem3.setText("Add customer...");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         customerDataMenu.add(jMenuItem3);
 
         jMenuItem4.setText("Search customer...");
@@ -179,6 +193,16 @@ public class RentacarUI extends javax.swing.JFrame
         new addInventoryUI();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem3ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem3ActionPerformed
+        new newCustomerUI();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem7ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem7ActionPerformed
+        new newEmployeeUI();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu customerDataMenu;
     private javax.swing.JMenu fileMenu;
@@ -189,8 +213,8 @@ public class RentacarUI extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu newMenu;
     private javax.swing.JMenuItem newRentalMenu;
     private javax.swing.JMenuItem newReturnRentalMenu;
     private javax.swing.JButton rentButton;

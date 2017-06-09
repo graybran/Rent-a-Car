@@ -3,13 +3,13 @@ package userInterface;
 import javax.swing.JOptionPane;
 import core.*;
 
-public class newRentalUI extends javax.swing.JPanel
+public class newCustomerUI extends javax.swing.JPanel
 {
 
     /**
      * Creates new form NewJPanel
      */
-    public newRentalUI()
+    public newCustomerUI()
     {
         initComponents();
         
@@ -20,10 +20,18 @@ public class newRentalUI extends javax.swing.JPanel
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
+            
             // When OK is pressed, input logic here to store data to database
-            // e.g.
-            // rental.car.make = "Toyota";
-            // rental.car.year = 1999;
+            // BUG: All input fields must be entered or application will crash
+            // TODO: Check user input. Before closing. Must be implemented with a custom dialog
+            String first = firstNameField.getText();
+            String last = lastNameField.getText();
+            int age = Integer.parseInt(ageField.getText());
+            String email = emailField.getText();
+            String phone = phoneField.getText();
+            
+            // For debugging purposes:
+            // System.out.println(first + " " + last);
         } 
         else 
         {
@@ -44,14 +52,11 @@ public class newRentalUI extends javax.swing.JPanel
         lastNameLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
         firstNameLabel = new javax.swing.JLabel();
-        carLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         lastNameField = new javax.swing.JTextField();
         firstNameField = new javax.swing.JTextField();
         phoneField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
-        carField = new javax.swing.JTextField();
-        searchCarButton = new javax.swing.JButton();
         ageLabel = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
 
@@ -61,14 +66,7 @@ public class newRentalUI extends javax.swing.JPanel
 
         firstNameLabel.setText("First Name");
 
-        carLabel.setText("Car");
-
         emailLabel.setText("Email Address");
-
-        carField.setEditable(false);
-        carField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        searchCarButton.setText("Search...");
 
         ageLabel.setText("Age");
 
@@ -78,28 +76,30 @@ public class newRentalUI extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
-                        .addComponent(carLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lastNameField)
-                    .addComponent(firstNameField)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(carField, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(8, 8, 8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchCarButton))
-                    .addComponent(phoneField)
-                    .addComponent(emailField)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastNameField)
+                            .addComponent(firstNameField)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 286, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(phoneField))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emailField)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -115,11 +115,6 @@ public class newRentalUI extends javax.swing.JPanel
                     .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchCarButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,10 +122,10 @@ public class newRentalUI extends javax.swing.JPanel
                     .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,8 +133,6 @@ public class newRentalUI extends javax.swing.JPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageField;
     private javax.swing.JLabel ageLabel;
-    private javax.swing.JTextField carField;
-    private javax.swing.JLabel carLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField firstNameField;
@@ -148,6 +141,5 @@ public class newRentalUI extends javax.swing.JPanel
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
-    private javax.swing.JButton searchCarButton;
     // End of variables declaration//GEN-END:variables
 }

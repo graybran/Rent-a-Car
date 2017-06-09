@@ -4,5 +4,5 @@ import java.util.*;
 
 public class fakeDatabase
 {
-    HashMap<Car, Customer> rentals = new HashMap<>();
+    HashMap<Vehicle, Customer> rentals = new HashMap<>();
 }

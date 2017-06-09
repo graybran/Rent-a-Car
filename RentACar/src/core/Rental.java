@@ -8,17 +8,17 @@ import core.*;
 public class Rental
 {
     // Insantiate member variables
-    public Car car;
-    public Customer customer;
+    private Vehicle car;
+    private Customer customer;
     
     // Instantiate variables when new Rental class is created
     public Rental()
     {
-        this.car = new Car();
+        this.car = new Vehicle();
         this.customer = new Customer();
     }
     
-    public Rental(Car car, Customer customer)
+    public Rental(Vehicle car, Customer customer)
     {
         this.car = car;
         this.customer = customer;
