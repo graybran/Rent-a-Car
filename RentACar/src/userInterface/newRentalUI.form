@@ -23,7 +23,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="emailLabel" max="32767" attributes="0"/>
-                          <Component id="phoneLabel" pref="86" max="32767" attributes="0"/>
+                          <Component id="phoneLabel" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="carLabel" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="firstNameLabel" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
@@ -116,8 +116,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="lastNameField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lastNameFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="firstNameField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNameFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="phoneField">
     </Component>
@@ -130,11 +136,17 @@
           <Color id="Text Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="searchCarButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search..."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchCarButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="ageLabel">
       <Properties>

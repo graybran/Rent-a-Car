@@ -7,8 +7,9 @@ package core;
 
 public class Car
 {
-    public int year;
+    public String year;
     public String make;
     public String model;
     public String carClass;
+    public String ID;
 }

@@ -1,8 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package userInterface;
 
 import javax.swing.JOptionPane;
 import core.*;
+import rentacar.*;
 
+/**
+ *
+ * @author Jose Antonio
+ */
 public class newRentalUI extends javax.swing.JPanel
 {
 
@@ -20,11 +30,36 @@ public class newRentalUI extends javax.swing.JPanel
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
-            // When OK is pressed, input logic here to store data to database
-            // e.g.
-            // rental.car.make = "Toyota";
-            // rental.car.year = 1999;
-        } 
+            //Stores customer information from text fields
+            //Search functionality isn't setup so I hardcoded a car choice there
+            Customer cTemp = new Customer();
+            cTemp.age = ageField.getText();
+            cTemp.emailAddress = emailField.getText();
+            cTemp.firstName = firstNameField.getText();
+            cTemp.lastName = lastNameField.getText();
+            //String car = carField.getText();
+            //Integer ID = Integer.parseInt(car);
+            
+            Rental rTemp = Rentacar.DBgetter(1);
+            rTemp.customer = cTemp;
+            Rentacar.DBupdater(rTemp, 1);
+            
+            //Tests whether information was actually stored
+            //Prints to debug window (No where in GUI)
+            Rental rtemp2 = Rentacar.DBgetter(1);
+            System.out.println("Customer Information");
+            System.out.println("First: " + rtemp2.customer.firstName);
+            System.out.println("Last: " + rtemp2.customer.lastName);
+            System.out.println("Age: " + rtemp2.customer.age);
+            System.out.println("Email: " + rtemp2.customer.emailAddress);
+            System.out.println();
+            System.out.println("Car Information");
+            System.out.println("ID: " + rtemp2.car.ID);
+            System.out.println("Make: " + rtemp2.car.make);
+            System.out.println("Model: " + rtemp2.car.model);
+            System.out.println("Year: " + rtemp2.car.year);
+            
+        }
         else 
         {
             System.out.println("Cancelled");
@@ -38,8 +73,7 @@ public class newRentalUI extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         lastNameLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
@@ -65,10 +99,32 @@ public class newRentalUI extends javax.swing.JPanel
 
         emailLabel.setText("Email Address");
 
+        lastNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameFieldActionPerformed(evt);
+            }
+        });
+
+        firstNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameFieldActionPerformed(evt);
+            }
+        });
+
         carField.setEditable(false);
         carField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        carField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carFieldActionPerformed(evt);
+            }
+        });
 
         searchCarButton.setText("Search...");
+        searchCarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCarButtonActionPerformed(evt);
+            }
+        });
 
         ageLabel.setText("Age");
 
@@ -83,7 +139,7 @@ public class newRentalUI extends javax.swing.JPanel
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phoneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                            .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addComponent(carLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -133,6 +189,22 @@ public class newRentalUI extends javax.swing.JPanel
                 .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameFieldActionPerformed
+
+    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameFieldActionPerformed
+
+    private void carFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carFieldActionPerformed
+
+    private void searchCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchCarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
