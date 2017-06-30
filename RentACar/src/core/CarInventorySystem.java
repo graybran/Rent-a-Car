@@ -49,6 +49,7 @@ public class CarInventorySystem
         
     }
     
+    /* //My version of searching for a vehicle.
     public Vehicle SearchVehicle(int searchID) {
         ArrayList<ArrayList> vehicles = new ArrayList<>();
         ArrayList<Object> vehicleInformation = null;
@@ -157,6 +158,7 @@ public class CarInventorySystem
         
         return foundVehicle;
     }
+    */
     
     public void StoreVehicle(Vehicle newVehicle) {
         try {
