@@ -18,9 +18,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="ageLabel" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="endDateLabel" max="32767" attributes="0"/>
+                  <Component id="startDateLabel" max="32767" attributes="0"/>
+                  <Component id="ageLabel" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="emailLabel" max="32767" attributes="0"/>
                           <Component id="phoneLabel" pref="0" max="32767" attributes="0"/>
@@ -41,8 +43,12 @@
                   </Group>
                   <Component id="phoneField" max="32767" attributes="0"/>
                   <Component id="emailField" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="ageField" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ageField" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="startDateField" pref="240" max="32767" attributes="0"/>
+                          <Component id="endDateField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -54,37 +60,49 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lastNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="lastNameField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="firstNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="firstNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lastNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lastNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="firstNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="firstNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="carLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="carField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="searchCarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="phoneLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="emailLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ageLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="ageField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="startDateLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="startDateField" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="carLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="carField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="searchCarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="endDateLabel" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="endDateField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="phoneLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="phoneField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="emailLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ageLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="ageField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,6 +172,20 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ageField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="startDateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="endDateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="End Date"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="startDateField">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="endDateField">
     </Component>
   </SubComponents>
 </Form>
