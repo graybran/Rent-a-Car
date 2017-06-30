@@ -1,12 +1,12 @@
-/*
-    This is the class car. New car objects can be created with this
-    The appropriate getters and setters are set
-*/
-
 package core;
+
+import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Vehicle
 {
+    private int ID;
     private int year;
     private String make;
     private String model;
@@ -14,117 +14,127 @@ public class Vehicle
     private String color;
     private boolean availability;
     private double dailyPrice;
+	 private String damages;
+	 private String gasLevel;
+	 private int mileage;
+    
+    private Customer customerRentedTo;
 
-    /**
-     * @return the year
-     */
+    public int getID()
+    {
+        return ID;
+    }
+
+    public void setID(int ID)
+    {
+        this.ID = ID;
+    }
+    
     public int getYear()
     {
         return year;
     }
 
-    /**
-     * @param year the year to set
-     */
     public void setYear(int year)
     {
         this.year = year;
     }
 
-    /**
-     * @return the make
-     */
     public String getMake()
     {
         return make;
     }
 
-    /**
-     * @param make the make to set
-     */
     public void setMake(String make)
     {
         this.make = make;
     }
 
-    /**
-     * @return the model
-     */
     public String getModel()
     {
         return model;
     }
 
-    /**
-     * @param model the model to set
-     */
     public void setModel(String model)
     {
         this.model = model;
     }
 
-    /**
-     * @return the carClass
-     */
     public String getCarClass()
     {
         return carClass;
     }
 
-    /**
-     * @param carClass the carClass to set
-     */
     public void setCarClass(String carClass)
     {
         this.carClass = carClass;
     }
 
-    /**
-     * @return the color
-     */
     public String getColor()
     {
         return color;
     }
 
-    /**
-     * @param color the color to set
-     */
     public void setColor(String color)
     {
         this.color = color;
     }
 
-    /**
-     * @return the availability
-     */
     public boolean isAvailability()
     {
         return availability;
     }
 
-    /**
-     * @param availability the availability to set
-     */
     public void setAvailability(boolean availability)
     {
         this.availability = availability;
     }
 
-    /**
-     * @return the dailyPrice
-     */
     public double getDailyPrice()
     {
         return dailyPrice;
     }
 
-    /**
-     * @param dailyPrice the dailyPrice to set
-     */
     public void setDailyPrice(double dailyPrice)
     {
         this.dailyPrice = dailyPrice;
     }
+	 
+    public String getDamages()
+    {
+        return damages;
+    }
+
+    public void setNewDamage(String damage)
+    {
+        this.damages = this.damages.concat(damage);
+    }
+
+    public int getMileage()
+    {
+        return mileage;
+    }
+
+    public void setMileage(int mileage)
+    {
+        this.mileage = mileage;
+    }	 
     
+    public String getGasLevel()
+    {
+        return gasLevel;
+    }
+
+    public void setGasLevel(String newGasLevel)
+    {
+        this.gasLevel = newGasLevel;
+    }	 
+	 
+    public Customer getCustomerRentedTo() {
+        return customerRentedTo;
+    }
+
+    public void setCustomerRentedTo(Customer customerRentedTo) {
+        this.customerRentedTo = customerRentedTo;
+    }
 }

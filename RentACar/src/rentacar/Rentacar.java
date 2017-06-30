@@ -5,62 +5,50 @@
 package rentacar;
 
 import userInterface.RentacarUI;
+import core.*;
+import java.io.FileNotFoundException;
 import java.io.*;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Rentacar
 {
-
-    /**
-     * @param args the command line arguments
-     */
+//    public static fakeDatabase DB = new fakeDatabase();
+    
     public static void main(String[] args)
     {
-        // Creates text files as a fake, temporary database
+        try {
+            File customerBase = new File("CustomerBase.txt");
+            File carBase = new File("CarBase.txt");
+            
+            customerBase.createNewFile();
+            carBase.createNewFile();
+        }
+        catch(Exception ex) {
+            System.out.println("Error: Could not create files. " + 
+                    "Please try again. " + ex.getMessage());
+            System.exit(1);
+        }
+        
         /*
-        try
-        {
-            File customerTable = new File("Customer-Table.txt");
-            File vehicleTable = new File("Vehicle-Table.txt");
-            File employeeTable = new File("Employee-Table.txt");
-
-            // Creates file when txt file does not exist
-            if(!customerTable.exists())
-                customerTable.createNewFile();
-            if(!vehicleTable.exists())
-                vehicleTable.createNewFile();
-            if(!employeeTable.exists())
-                employeeTable.createNewFile();
-
-            // Creates file writers file addendums
-            FileWriter fwCustomer = new FileWriter("Customer-Table.txt", true);
-            BufferedWriter bwCustomer = new BufferedWriter(fwCustomer);
-            PrintWriter outCustomer = new PrintWriter(bwCustomer);
-
-            FileWriter fwVehicle = new FileWriter("Vehicle-Table.txt", true);
-            BufferedWriter bwVehicle = new BufferedWriter(fwVehicle);
-            PrintWriter outVehicle = new PrintWriter(bwVehicle);
-
-            FileWriter fwEmployee = new FileWriter("Employee-Table.txt", true);
-            BufferedWriter bwEmployee = new BufferedWriter(fwEmployee);
-            PrintWriter outEmployee = new PrintWriter(bwEmployee);
-
-            // Finish editting files
-            outCustomer.close();
-            outVehicle.close();
-            outEmployee.close();
-        } catch(IOException ioe)
-        {
-             System.out.println("Exception occurred:");
-             ioe.printStackTrace();
+        try {
+//            DB.initDBpopulator();
+            DB.CreateCustomerBase();
+            //DB.CreateCarBase();
+        } 
+//        catch (FileNotFoundException | UnsupportedEncodingException ex) {
+        catch(IOException ex) {
+            Logger.getLogger(Rentacar.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
-        
-        /* Set the Nimbus look and feel */
+                
+        // Set the Nimbus look and feel 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        // If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        // For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -86,14 +74,57 @@ public class Rentacar
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        // Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
             {
+
                 new RentacarUI().setVisible(true);
             }
         });
+        
+        /*
+        try {
+            DB.CreateCustomerBase();
+        } catch (IOException ex) {
+            Logger.getLogger(Rentacar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
     }
     
+    /*
+    //These may be redundant (possibly go straight to fakeDB class)
+    public static Rental DBgetter(Integer ID){
+        return DB.get(ID);
+        
+    }
+    public static void DBupdater(Rental renter, Integer ID){
+        DB.set(renter, ID);
+        
+    }
+    */
+    
+    /*
+    private static void PrintCustomerBase() {
+        Customer cust = new Customer();
+        ArrayList<Customer> customerBase = cust.getCustomers();
+        
+        FileWriter custEntry;
+        try {
+            custEntry = new FileWriter("CustomerBase.txt", true);
+            for(int i=0;i<customerBase.size();i++) {
+                custEntry.write(customerBase.get(i).getFirstName() + "\t ");
+                custEntry.write(customerBase.get(i).getLastName() + "\t ");
+                custEntry.write(customerBase.get(i).getAge() + "\t ");
+                custEntry.write(customerBase.get(i).getPhoneNumber() + "\t ");
+                custEntry.write(customerBase.get(i).getEmailAddress() + "\t ");
+            }
+            custEntry.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Rentacar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }  
+    }
+    */
 }
