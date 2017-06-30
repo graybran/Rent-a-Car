@@ -14,6 +14,9 @@ public class Vehicle
     private String color;
     private boolean availability;
     private double dailyPrice;
+	 private String damages;
+	 private String gasLevel;
+	 private int mileage;
     
     private Customer customerRentedTo;
 
@@ -96,7 +99,37 @@ public class Vehicle
     {
         this.dailyPrice = dailyPrice;
     }
+	 
+    public String getDamages()
+    {
+        return damages;
+    }
+
+    public void setNewDamage(String damage)
+    {
+        this.damages = this.damages.concat(damage);
+    }
+
+    public int getMileage()
+    {
+        return mileage;
+    }
+
+    public void setMileage(int mileage)
+    {
+        this.mileage = mileage;
+    }	 
     
+    public String getGasLevel()
+    {
+        return gasLevel;
+    }
+
+    public void setGasLevel(String newGasLevel)
+    {
+        this.gasLevel = newGasLevel;
+    }	 
+	 
     public Customer getCustomerRentedTo() {
         return customerRentedTo;
     }
