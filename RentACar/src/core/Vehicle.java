@@ -1,9 +1,8 @@
-/*
-    This is the class car. New car objects can be created with this
-    The appropriate getters and setters are set
-*/
-
 package core;
+
+import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Vehicle
 {
@@ -15,6 +14,8 @@ public class Vehicle
     private String color;
     private boolean availability;
     private double dailyPrice;
+    
+    private Customer customerRentedTo;
 
     public int getID()
     {
@@ -96,4 +97,11 @@ public class Vehicle
         this.dailyPrice = dailyPrice;
     }
     
+    public Customer getCustomerRentedTo() {
+        return customerRentedTo;
+    }
+
+    public void setCustomerRentedTo(Customer customerRentedTo) {
+        this.customerRentedTo = customerRentedTo;
+    }
 }
