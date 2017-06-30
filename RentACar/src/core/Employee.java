@@ -4,7 +4,10 @@ public class Employee
 {
     private int empID;
     private Customer servicedCustomer;
-    private Vehicle rentedCar;        
+    private Vehicle rentedCar;
+    
+    private String firstName;
+    private String lastName;
 
     public int getEmpID()
     {
@@ -34,5 +37,21 @@ public class Employee
     public void setRentedCar(Vehicle rentedCar)
     {
         this.rentedCar = rentedCar;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
