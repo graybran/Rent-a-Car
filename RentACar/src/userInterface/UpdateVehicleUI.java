@@ -106,7 +106,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -165,8 +166,10 @@ public class UpdateVehicleUI extends javax.swing.JPanel
 
         jLabel7.setText("Daily Price");
 
-        newMakeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        newMakeField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 newMakeFieldActionPerformed(evt);
             }
         });
@@ -274,12 +277,12 @@ public class UpdateVehicleUI extends javax.swing.JPanel
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField newClassField;
-    private javax.swing.JTextField newColorField;
-    private javax.swing.JTextField newDailyPriceField;
-    private javax.swing.JTextField newMakeField;
-    private javax.swing.JTextField newModelField;
-    private javax.swing.JTextField newYearField;
+    public javax.swing.JTextField newClassField;
+    public javax.swing.JTextField newColorField;
+    public javax.swing.JTextField newDailyPriceField;
+    public javax.swing.JTextField newMakeField;
+    public javax.swing.JTextField newModelField;
+    public javax.swing.JTextField newYearField;
     private javax.swing.JTextField searchIDField;
     // End of variables declaration//GEN-END:variables
 }
