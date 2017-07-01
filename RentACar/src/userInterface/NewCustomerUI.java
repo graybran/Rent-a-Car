@@ -2,6 +2,7 @@ package userInterface;
 
 import javax.swing.JOptionPane;
 import core.*;
+import java.io.FileNotFoundException;
 
 public class NewCustomerUI extends javax.swing.JPanel
 {
@@ -10,8 +11,9 @@ public class NewCustomerUI extends javax.swing.JPanel
 
     /**
      * Creates new form NewJPanel
+     * @throws java.io.FileNotFoundException
      */
-    public NewCustomerUI()
+    public NewCustomerUI() throws FileNotFoundException
     {
         initComponents();
         
@@ -43,10 +45,10 @@ public class NewCustomerUI extends javax.swing.JPanel
                 String phone = phoneField.getText();
                 String email = emailField.getText();
                 
-                if(!unitTesting) {
-                    CustomerStorageSystem customerSystem = new CustomerStorageSystem();
+               // if(!unitTesting) {
+                    CustomerStorageSystem customerSystem = new CustomerStorageSystem(null);
                     customerSystem.RegisterCustomer(id, first, last, age, phone, email);
-                }
+               // }
             }
             else {
                 JOptionPane.showMessageDialog(null, "Some fields are blank. "

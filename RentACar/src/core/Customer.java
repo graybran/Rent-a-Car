@@ -22,10 +22,25 @@ public class Customer
     private String emailAddress;
     private String phoneNumber;
     private int age;
-    
     private int custID;
+    private int rentalID;
+    
     private Vehicle rentedCar;
     
+    
+    public int getCustID(){
+        return custID;
+    }
+    public void setCustID(int ID){
+        this.custID = ID;
+    }
+    
+    public int getRentalID(){
+        return rentalID;
+    }
+    public void setRentalID(int ID){
+        this.rentalID = ID;
+    }
     public String getLastName()
     {
         return lastName;
@@ -82,14 +97,6 @@ public class Customer
 
     public void setRentedCar(Vehicle rentedCar) {
         this.rentedCar = rentedCar;
-    }
-    
-    public int getCustID() {
-        return custID;
-    }
-
-    public void setCustID(int custID) {
-        this.custID = custID;
     }
     
 //    public void StoreCustomer() {

@@ -6,6 +6,7 @@
 package userInterface;
 
 import core.CustomerStorageSystem;
+import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,7 @@ public class UpdateCustomerUI extends javax.swing.JPanel {
     /**
      * Creates new form UpdateCustomerUI
      */
-    public UpdateCustomerUI() {
+    public UpdateCustomerUI() throws FileNotFoundException {
         initComponents();
         
         int result = JOptionPane.showConfirmDialog(null, this, "Update Customer", 
@@ -33,7 +34,7 @@ public class UpdateCustomerUI extends javax.swing.JPanel {
                 int newAge = Integer.parseInt(newAgeField.getText());
                 String newPhoneNumber = newPhoneNumberField.getText();
                 String newEmailAddress = newEmailAddrField.getText();
-                CustomerStorageSystem customerSystem = new CustomerStorageSystem();
+                CustomerStorageSystem customerSystem = new CustomerStorageSystem(null);
                 customerSystem.UpdateCustomer(searchFirstName, searchLastName, 
                         newAge, newPhoneNumber, newEmailAddress);
             }

@@ -1,102 +1,63 @@
 package userInterface;
 
-import core.*;
 import javax.swing.JOptionPane;
 
-public class UpdateVehicleUI extends javax.swing.JPanel 
-{
-    boolean unitTesting = true;
-    
-    public UpdateVehicleUI() 
-    {
+public class UpdateVehicleUI extends javax.swing.JPanel {
+
+    /**
+     * Creates new form UpdateCarUI
+     */
+    public UpdateVehicleUI() {
         initComponents();
         
         // Adds an "OK" and "CANCEL" dialog
         int result = JOptionPane.showConfirmDialog(null, this, "Update Inventory",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-       
+        
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
-            if(ValidateInput()) 
-            {
-                if(ValidateIDExists()) 
-                {
-                    int id = Integer.parseInt(searchIDField.getText());
-                    
-                    // Declarations with built in error checking
-                    String make = newMakeField.getText().isEmpty() ? null : newMakeField.getText();
-                    String model = newModelField.getText().isEmpty() ? null : newModelField.getText();
-                    String color = newColorField.getText().isEmpty() ? null : newColorField.getText();
-                    int year =newYearField.getText().isEmpty() ? (int) 1e9 : Integer.parseInt(newYearField.getText());
-                    String carClass = newClassField.getText().isEmpty() ? null : newClassField.getText();
-                    double dailyPrice = newModelField.getText().isEmpty() ? -1e9 : Double.parseDouble(newDailyPriceField.getText());
-                    
-                    // Grab vehicle class with said ID
-                    /******* Waiting on search function to work *******/
-                    /*       Next line is a placeholder               */
-                    Vehicle updateThisVehicle = new Vehicle();
-                    
-                    // Update vehicle info with any entered text
-                    if (make != null)
-                        updateThisVehicle.setMake(make);
-                    if (model != null)
-                        updateThisVehicle.setModel(model);
-                    if (color != null)    
-                        updateThisVehicle.setColor(color);
-                    if (year <= 9999)    
-                        updateThisVehicle.setYear(year);
-                    if (carClass != null)    
-                        updateThisVehicle.setCarClass(carClass);
-                    if (dailyPrice >= 0)    
-                        updateThisVehicle.setDailyPrice(dailyPrice);
-
-                    if(!unitTesting) 
-                    {
-                        
-                        // KEEP these lines
-                        // CarInventorySystem inventory = new CarInventorySystem();
-                        // inventory.AddCar(id, make, model, color, year, carClass, 
-                        // true, dailyPrice);
-                    }
-                }
-                else 
-                {
-                    if(!unitTesting) 
-                    {
-                        JOptionPane.showMessageDialog(null, "Error: A vehicle with "
-                                + "that ID number already exists. Please try again.", 
-                                "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
+            
+            // When OK is pressed, input logic here to store data to database
+            // BUG: All input fields must be entered or application will crash
+            // TODO: Check user input. Before closing. Must be implemented with a custom dialog
+//            String first = firstNameField.getText();
+//            String last = lastNameField.getText();
+//            int age = Integer.parseInt(ageField.getText());
+//            String email = emailField.getText();
+//            String phone = phoneField.getText();
+            
+            // For debugging purposes:
+            // System.out.println(first + " " + last);
+            
+            if(ValidateInput()) {
+                
             }
-            else 
-            {
-                JOptionPane.showMessageDialog(null, "Please enter an ID.",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+            else {
+                JOptionPane.showMessageDialog(null, "Some fields are blank. "
+                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
+            
+//            Customer addedCustomer = new Customer();
+//            addedCustomer.setFirstName(first);
+//            addedCustomer.setLastName(last);
+//            addedCustomer.setAge(age);
+//            addedCustomer.setPhoneNumber(phone);
+//            addedCustomer.setEmailAddress(email);
+//            addedCustomer.StoreCustomer();
+            
+//            CustomerStorageSystem customerSystem = new CustomerStorageSystem();
+//            customerSystem.RegisterCustomer(first, last, age, phone, email);
         } 
         else 
         {
             System.out.println("Cancelled");
         }
     }
-        
-    private boolean ValidateInput()
-    {
-        if(searchIDField.getText().isEmpty()) 
-            return false;
-
-        return true;
-    }
-
-    private boolean ValidateIDExists() 
-    {
-        // KEEP these lines
-        // CarInventorySystem searchInventory = new CarInventorySystem();
-        // Vehicle found = searchInventory.SearchVehicle(Integer.parseInt(idNumberField.getText()));
-        Vehicle found = new Vehicle();
-        return true; // For now while search isn't working
+    
+    private boolean ValidateInput() {
+        return false;
     }
 
     /**
@@ -106,8 +67,7 @@ public class UpdateVehicleUI extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -166,10 +126,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel
 
         jLabel7.setText("Daily Price");
 
-        newMakeField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        newMakeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newMakeFieldActionPerformed(evt);
             }
         });
@@ -277,12 +235,12 @@ public class UpdateVehicleUI extends javax.swing.JPanel
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JTextField newClassField;
-    public javax.swing.JTextField newColorField;
-    public javax.swing.JTextField newDailyPriceField;
-    public javax.swing.JTextField newMakeField;
-    public javax.swing.JTextField newModelField;
-    public javax.swing.JTextField newYearField;
+    private javax.swing.JTextField newClassField;
+    private javax.swing.JTextField newColorField;
+    private javax.swing.JTextField newDailyPriceField;
+    private javax.swing.JTextField newMakeField;
+    private javax.swing.JTextField newModelField;
+    private javax.swing.JTextField newYearField;
     private javax.swing.JTextField searchIDField;
     // End of variables declaration//GEN-END:variables
 }

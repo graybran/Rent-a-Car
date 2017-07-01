@@ -2,6 +2,10 @@ package userInterface;
 
 import core.*;
 import Rentacar.*;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public class RentacarUI extends javax.swing.JFrame
 {
@@ -222,7 +226,11 @@ public class RentacarUI extends javax.swing.JFrame
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        new NewCustomerUI();
+        try {
+            new NewCustomerUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -230,7 +238,11 @@ public class RentacarUI extends javax.swing.JFrame
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        new UpdateCustomerUI();
+        try {
+            new UpdateCustomerUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -238,7 +250,8 @@ public class RentacarUI extends javax.swing.JFrame
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        new SearchCustomerUI();
+        
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

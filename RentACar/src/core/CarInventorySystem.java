@@ -21,11 +21,38 @@ public class CarInventorySystem
     */
     
     private InventorySystem inventory;
+    private static ArrayList<Vehicle> carList;
     
-    public CarInventorySystem(InventorySystem inv) {
+    public CarInventorySystem(InventorySystem inv) throws FileNotFoundException {
         this.inventory = inv;
+        this.carList = new ArrayList(1000);
+        populateInitialList();
     }
 
+    private void populateInitialList() throws FileNotFoundException{
+        
+                int i=0;
+        Scanner in = new Scanner(new File("Starter DB.txt"));
+        while(in.hasNextLine()){
+           Vehicle vehicle = new Vehicle();
+           vehicle.setID(Integer.parseInt(in.nextLine()));
+           vehicle.setMake(in.nextLine());
+           vehicle.setModel(in.nextLine());
+           vehicle.setColor(in.nextLine());
+           vehicle.setYear(Integer.parseInt(in.nextLine()));
+           vehicle.setCarClass(in.nextLine());
+           if(Integer.parseInt(in.nextLine()) == 0){
+               vehicle.setAvailability(false);
+           }
+           else{
+               vehicle.setAvailability(true);
+           }
+           vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+
+           carList.add(vehicle.getID(), vehicle);
+        }
+    }
+    
     public Vehicle AddCar(int ID, String brand, String model, String color, int year, 
             String carClass, boolean availability, double dailyPrice) {
         Vehicle newVehicle = new Vehicle();
@@ -175,5 +202,12 @@ public class CarInventorySystem
        catch(Exception ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static Vehicle getCar(int id){
+        return carList.get(id);
+    }
+    public static int getSize(){
+        return carList.size();
     }
 }

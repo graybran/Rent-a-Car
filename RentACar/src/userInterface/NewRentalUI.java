@@ -113,7 +113,6 @@ public class NewRentalUI extends javax.swing.JPanel
             }
         });
 
-        carField.setEditable(false);
         carField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         carField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +204,7 @@ public class NewRentalUI extends javax.swing.JPanel
     }//GEN-LAST:event_carFieldActionPerformed
 
     private void searchCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCarButtonActionPerformed
-        // TODO add your handling code here:
+        new SearchInventoryUI();
     }//GEN-LAST:event_searchCarButtonActionPerformed
 
 

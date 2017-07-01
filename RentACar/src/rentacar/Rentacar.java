@@ -17,7 +17,7 @@ public class Rentacar
 {
 //    public static fakeDatabase DB = new fakeDatabase();
     
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
         try {
             File customerBase = new File("CustomerBase.txt");
@@ -31,7 +31,8 @@ public class Rentacar
                     "Please try again. " + ex.getMessage());
             System.exit(1);
         }
-        
+        CarInventorySystem carDB = new CarInventorySystem(null);
+        CustomerStorageSystem custDB = new CustomerStorageSystem(null);
         /*
         try {
 //            DB.initDBpopulator();
