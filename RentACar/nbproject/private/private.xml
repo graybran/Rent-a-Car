@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/src/core/CarInventorySystem.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/test/core/CustomerStorageSystemTest.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/test/core/CoreTestSuite.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/src/core/CustomerStorage.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/test/core/CarInventoryTest.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/src/core/CustomerStorageSystem.java</file>
-            <file>file:/C:/Users/Brandon/Documents/NetBeansProjects/Rent-a-Car/RentACar/src/core/InventorySystem.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/NewRentalUI.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/rentacar/Rentacar.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/UpdateVehicleUI.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/SearchInventoryUI.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/RentacarUI.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/core/CustomerStorageSystem.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/AddInventoryUI.java</file>
+            <file>file:/C:/Users/Juh/Documents/COP%204331/Sprint2/Test/RentACar/src/userInterface/NewCustomerUI.java</file>
         </group>
     </open-files>
 </project-private>
