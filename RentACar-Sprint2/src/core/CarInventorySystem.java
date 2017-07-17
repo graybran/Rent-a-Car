@@ -1,55 +1,60 @@
 package core;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.charset.*;
+import java.nio.file.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CarInventorySystem
 {
-    /*
-    public String year;
-    public String make;
-    public String model;
-    public String carClass;
-    public String ID;
-    */
     
-    private InventorySystem inventory;
     private static ArrayList<Vehicle> carList;
     
-    public CarInventorySystem(InventorySystem inv) throws FileNotFoundException {
-        this.inventory = inv;
+    public CarInventorySystem() throws FileNotFoundException 
+    {
         this.carList = new ArrayList(1000);
         populateInitialList();
     }
 
     private void populateInitialList() throws FileNotFoundException{
         
-                int i=0;
+        int i=0;
         Scanner in = new Scanner(new File("Starter DB.txt"));
         while(in.hasNextLine()){
-           Vehicle vehicle = new Vehicle();
-           vehicle.setID(Integer.parseInt(in.nextLine()));
-           vehicle.setMake(in.nextLine());
-           vehicle.setModel(in.nextLine());
-           vehicle.setColor(in.nextLine());
-           vehicle.setYear(Integer.parseInt(in.nextLine()));
-           vehicle.setCarClass(in.nextLine());
-           if(Integer.parseInt(in.nextLine()) == 0){
-               vehicle.setAvailability(false);
-           }
-           else{
-               vehicle.setAvailability(true);
-           }
-           vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+        Vehicle vehicle = new Vehicle();
+        vehicle.setID(Integer.parseInt(in.nextLine()));
+        vehicle.setMake(in.nextLine());
+        vehicle.setModel(in.nextLine());
+        vehicle.setColor(in.nextLine());
+        vehicle.setYear(Integer.parseInt(in.nextLine()));
+        vehicle.setCarClass(in.nextLine());
+        if(Integer.parseInt(in.nextLine()) == 0){
+            vehicle.setAvailability(false);
+        }
+        else{
+            vehicle.setAvailability(true);
+        }
+            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+        }
+        
+        checkDBExists();
+    }
+    
+    private void checkDBExists()
+    {
+        try
+        {
+            File file = new File("CarBase.txt");
 
-           carList.add(vehicle.getID(), vehicle);
+            if(!file.exists())
+                file.createNewFile();
+        }
+        catch(IOException io)
+        {
+            // You screwed up
         }
     }
     
@@ -65,18 +70,29 @@ public class CarInventorySystem
         newVehicle.setAvailability(availability);
         newVehicle.setDailyPrice(dailyPrice);
         
+        // Using new UpdateDatabase Function
         StoreVehicle(newVehicle);
+        
+        try
+        {
+            UpdateDatabase(newVehicle);
+        }
+        catch(IOException e)
+        {
+            
+        }
+        
+        // NOTE: This gives indexOutOfBounds if ID is NOT in order! Suggest using an array instead.
+        carList.add(newVehicle.getID(), newVehicle);
         
         return newVehicle;
     }
     
-    public void UpdateCar(String newBrand, String newModel, String newColor, 
-            int newYear, String newCarClass, boolean newAvailability, 
-            double newDailyPrice) {
+    public void UpdateCar(Vehicle updateThisVehicle)
+    {
         
     }
     
-    /* //My version of searching for a vehicle.
     public Vehicle SearchVehicle(int searchID) {
         ArrayList<ArrayList> vehicles = new ArrayList<>();
         ArrayList<Object> vehicleInformation = null;
@@ -86,43 +102,17 @@ public class CarInventorySystem
             Scanner vehicleScan = new Scanner(new File("CarBase.txt"));
             while(vehicleScan.hasNextLine()) {
                 vehicleEntry = vehicleScan.nextLine();
-//                System.out.println(vehicleEntry);
                 vehicleInformation = CreateVehicleEntry(vehicleEntry);
                 vehicles.add(vehicleInformation);
-//                if(VerifyFoundVehicle(searchID, vehicleInformation)) {
-//                    System.out.println("Vehicle found!");
-//                    JOptionPane.showMessageDialog(null, "Found vehicle: " + 
-//                            vehicleEntry, "Vehicle Found", 
-//                            JOptionPane.INFORMATION_MESSAGE);
-//                }
-//                else {
-//                    System.out.println("Vehicle not found!");
-//                    JOptionPane.showMessageDialog(null, 
-//                            "Sorry, the vehicle was not found. Please try again.", 
-//                            "Vehicle Not Found", JOptionPane.INFORMATION_MESSAGE);
-//                }
             }
             vehicleScan.close();
             
-            //All of below works for sure, but need to clean up
             if(VerifyFoundVehicle(searchID, vehicles)) {
                 System.out.println("Vehicle found!");
                 
                 ArrayList<Object> information = GetFoundInformation(searchID, vehicles);
 
                 foundVehicle = InitializeVehicleInformation(information);
-                
-//                foundVehicle = new Vehicle();
-//                foundVehicle.setMake(vehicleInformation.get(1).toString());
-//                foundVehicle.setModel(vehicleInformation.get(2).toString());
-//                foundVehicle.setColor(vehicleInformation.get(3).toString());
-//                foundVehicle.setYear(Integer.parseInt(vehicleInformation.get(4).toString()));
-//                foundVehicle.setCarClass(vehicleInformation.get(5).toString());
-//                foundVehicle.setDailyPrice(Double.parseDouble(vehicleInformation.get(7).toString()));
-                
-//                    JOptionPane.showMessageDialog(null, "Found vehicle: " + 
-//                            vehicleEntry, "Vehicle Found", 
-//                            JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CarInventorySystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,11 +128,6 @@ public class CarInventorySystem
             vehicleEntries.add(newVehicleEntry[i]);
         }
         
-//        //Debugging
-//        for(Object e:vehicleEntries) {
-//            System.out.println(e.toString());
-//        }
-        
         return vehicleEntries;
     }
     
@@ -154,9 +139,6 @@ public class CarInventorySystem
                 }
             }
         }
-//        if(verifyID == Integer.parseInt(vehicle.get(0).toString())) {
-//            return true;
-//        }
         return false;
     }
     
@@ -180,14 +162,26 @@ public class CarInventorySystem
         foundVehicle.setColor(vehicleInformation.get(3).toString());
         foundVehicle.setYear(Integer.parseInt(vehicleInformation.get(4).toString()));
         foundVehicle.setCarClass(vehicleInformation.get(5).toString());
-        foundVehicle.setAvailability(Boolean.valueOf(vehicleInformation.get(6).toString()));
+        foundVehicle.setAvailability(vehicleInformation.get(6).toString().equals("1"));
         foundVehicle.setDailyPrice(Double.parseDouble(vehicleInformation.get(7).toString()));
         
         return foundVehicle;
     }
-    */
     
-    public void StoreVehicle(Vehicle newVehicle) {
+    
+    
+    public void StoreVehicle(Vehicle newVehicle) 
+    {
+        // Using new UpdateDatabase Function
+        try
+        {
+            UpdateDatabase(newVehicle);
+        }
+        catch(IOException e)
+        {
+            
+        }
+        /*
         try {
             FileWriter vehicleEntry = new FileWriter("CarBase.txt", true);
             vehicleEntry.write(newVehicle.getID() + " " + newVehicle.getMake() + 
@@ -196,18 +190,93 @@ public class CarInventorySystem
                     " " + newVehicle.isAvailability() + " " + 
                     newVehicle.getDailyPrice());
             vehicleEntry.write(System.getProperty("line.separator"));
-            inventory.ReadVehicleEntry("CarBase.txt");
             vehicleEntry.close();
         }
        catch(Exception ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */      
     }
     
-    public static Vehicle getCar(int id){
-        return carList.get(id);
+    // Overwrites a specific vehicle based on ID. Also sorts the database as a consequence.
+    public void UpdateDatabase(Vehicle insertThisVehicle) throws IOException
+    {
+        String [] carListBuffer = new String[1000];
+        
+        // Reads CarBase.txt
+        Scanner in = new Scanner(new File("CarBase.txt"));
+        int id = in.nextInt();
+        String N = in.nextLine();
+        StringBuilder sb = new StringBuilder();
+        
+        // Store contents in an ArrayList
+        while (in.hasNextLine())
+        {
+            carListBuffer[id] = N;
+            id = in.nextInt();
+            N = in.nextLine();
+        }
+        carListBuffer[id] = N;
+        
+        // Convert data to string for ArrayList
+        String stringToWrite = VehicleInfoToOneLineString(insertThisVehicle, sb);
+                 
+        // Insert to ArrayList
+        carListBuffer[insertThisVehicle.getID()] = stringToWrite;
+        
+        // Writes new data to file
+        WriteDBArrayToFile(carListBuffer);
     }
-    public static int getSize(){
+    
+    private String VehicleInfoToOneLineString(Vehicle insertThisVehicle, StringBuilder sb)
+    {
+        sb.append(" ").append(insertThisVehicle.getMake()).append(" ");
+        sb.append(insertThisVehicle.getModel()).append(" ");
+        sb.append(insertThisVehicle.getColor()).append(" ");
+        sb.append(insertThisVehicle.getYear()).append(" ");
+        sb.append(insertThisVehicle.getCarClass()).append(" ");
+        sb.append(Boolean.toString(insertThisVehicle.isAvailability())).append(" ");
+        sb.append(insertThisVehicle.getDailyPrice()).append(" ");
+        
+        return sb.toString();
+    }
+    
+    // Writes new data to file
+    private void WriteDBArrayToFile(String [] carListBuffer) throws IOException
+    {
+        // !!!!!!!! TODO: CHANGE to "CarBase.txt" for release! !!!!!!!!!!!
+        FileWriter fw = new FileWriter("CarBase.txt", false);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw);
+        
+        for(int i = 0; i < carListBuffer.length; i++)
+        {
+            if(carListBuffer[i] != null)
+            {
+                out.print(i);
+                out.println(carListBuffer[i]);
+            }
+        }
+        
+        out.close();
+    }
+    
+    public static Vehicle getCar(int id)
+    {
+        Vehicle retVal;
+        
+        try
+        {
+            retVal = carList.get(id);
+        }
+        catch (IndexOutOfBoundsException e)
+        {
+            return null;
+        }
+        return retVal;
+    }
+    public static int getSize()
+    {
         return carList.size();
     }
 }

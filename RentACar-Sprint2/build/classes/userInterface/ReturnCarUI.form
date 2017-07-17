@@ -37,7 +37,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="DamageField" min="-2" pref="216" max="-2" attributes="0"/>
-                          <Component id="carIDField" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="carIDField" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
