@@ -13,7 +13,8 @@ public class CarInventorySystem
     
     private static ArrayList<Vehicle> carList;
     
-    public CarInventorySystem() throws FileNotFoundException {
+    public CarInventorySystem() throws FileNotFoundException 
+    {
         this.carList = new ArrayList(1000);
         populateInitialList();
     }
@@ -36,8 +37,24 @@ public class CarInventorySystem
         else{
             vehicle.setAvailability(true);
         }
-        vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+        }
+        
+        checkDBExists();
+    }
+    
+    private void checkDBExists()
+    {
+        try
+        {
+            File file = new File("CarBase.txt");
 
+            if(!file.exists())
+                file.createNewFile();
+        }
+        catch(IOException io)
+        {
+            // You screwed up
         }
     }
     
@@ -55,15 +72,6 @@ public class CarInventorySystem
         
         // Using new UpdateDatabase Function
         StoreVehicle(newVehicle);
-        
-        try
-        {
-            UpdateDatabase(newVehicle);
-        }
-        catch(IOException e)
-        {
-            
-        }
         
         // NOTE: This gives indexOutOfBounds if ID is NOT in order! Suggest using an array instead.
         carList.add(newVehicle.getID(), newVehicle);

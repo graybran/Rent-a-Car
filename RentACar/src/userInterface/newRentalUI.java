@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package userInterface;
 
 import javax.swing.JOptionPane;
 import core.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import rentacar.*;
 
-/**
- *
- * @author Jose Antonio
- */
 public class newRentalUI extends javax.swing.JPanel
 {
 
@@ -40,25 +36,12 @@ public class newRentalUI extends javax.swing.JPanel
             //String car = carField.getText();
             //Integer ID = Integer.parseInt(car);
             
-            Rental rTemp = Rentacar.DBgetter(1);
-            rTemp.customer = cTemp;
-            Rentacar.DBupdater(rTemp, 1);
-            
-            //Tests whether information was actually stored
-            //Prints to debug window (No where in GUI)
-            Rental rtemp2 = Rentacar.DBgetter(1);
-            System.out.println("Customer Information");
-            System.out.println("First: " + rtemp2.customer.getFirstName());
-            System.out.println("Last: " + rtemp2.customer.getLastName());
-            System.out.println("Age: " + rtemp2.customer.getAge());
-            System.out.println("Email: " + rtemp2.customer.getEmailAddress());
-            System.out.println();
-            System.out.println("Car Information");
-            System.out.println("ID: " + rtemp2.vehicle.getID());
-            System.out.println("Make: " + rtemp2.vehicle.getMake());
-            System.out.println("Model: " + rtemp2.vehicle.getModel());
-            System.out.println("Year: " + rtemp2.vehicle.getYear());
-            
+				// Calculate rental duration
+				//int rentalDays = calculateRentalDuration();
+				
+				// Cost of rental
+				//double cost = calculateRentalCost(rentalDays, rtemp2.vehicle.getDailyPrice());
+				
         }
         else 
         {
@@ -134,9 +117,9 @@ public class newRentalUI extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
@@ -155,7 +138,7 @@ public class newRentalUI extends javax.swing.JPanel
                     .addComponent(emailField)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 313, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,7 +169,7 @@ public class newRentalUI extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,7 +186,7 @@ public class newRentalUI extends javax.swing.JPanel
     }//GEN-LAST:event_carFieldActionPerformed
 
     private void searchCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCarButtonActionPerformed
-        // TODO add your handling code here:
+        new SearchInventoryUI();
     }//GEN-LAST:event_searchCarButtonActionPerformed
 
 
@@ -222,4 +205,19 @@ public class newRentalUI extends javax.swing.JPanel
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JButton searchCarButton;
     // End of variables declaration//GEN-END:variables
+/*
+	private int calculateRentalDuration() 
+	{
+		Date start = startDateField.getDate();
+		Date end = endDateField.getDate();
+		long diff = end.getTime() - start.getTime();
+		
+		return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+	}
+	
+	private double calculateRentalCost(int rentalDuration, double price)
+	{
+		return rentalDuration * price;
+	}
+*/	
 }
