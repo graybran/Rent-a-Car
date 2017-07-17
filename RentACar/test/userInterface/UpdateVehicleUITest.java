@@ -1,6 +1,9 @@
 package userInterface;
 
 import java.awt.Component;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,7 +17,11 @@ public class UpdateVehicleUITest
  
     public UpdateVehicleUITest()
     {
-        testUpdateVehicleUI = new UpdateVehicleUI();
+        try {
+            testUpdateVehicleUI = new UpdateVehicleUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UpdateVehicleUITest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @BeforeClass

@@ -18,6 +18,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
         int result = JOptionPane.showConfirmDialog(null, this, "Update Inventory",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         
+        boolean toUpdate = true;
+        
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
@@ -61,9 +63,10 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
                     // Updates the database, overwriting old one
                     try
                     {
-                        searchInventory.UpdateDatabase(updateThisVehicle);  
+//                        searchInventory.UpdateDatabase(updateThisVehicle, toUpdate);
+                        searchInventory.StoreVehicle(updateThisVehicle, toUpdate);
                     }
-                    catch(IOException e)
+                    catch(Exception e)
                     {
                         // RIP
                     }
@@ -140,8 +143,7 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -169,10 +171,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
         jLabel1.setText("ID Number");
 
         searchButton.setText("Search...");
-        searchButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
@@ -215,10 +215,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
 
         jLabel7.setText("Daily Price");
 
-        newMakeField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        newMakeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newMakeFieldActionPerformed(evt);
             }
         });
@@ -228,10 +226,8 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
         jLabel9.setText("Availability");
 
         newAvailability.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Available", "Not Available" }));
-        newAvailability.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        newAvailability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newAvailabilityActionPerformed(evt);
             }
         });
@@ -260,18 +256,17 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(newClassField)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(newDailyPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(newAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(newDailyPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 188, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(

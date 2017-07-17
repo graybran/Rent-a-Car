@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 public class SearchInventoryUI extends javax.swing.JPanel {    
 
+    private static Vehicle foundVehicle;
+    
     /**
      * Creates new form SearchInventoryUI
      */
@@ -17,13 +19,17 @@ public class SearchInventoryUI extends javax.swing.JPanel {
         
         // Adds an "OK" dialog
         Object[] options = {"OK"};
-        int result = JOptionPane.showOptionDialog(null,
-                   this,"Title",
-                   JOptionPane.PLAIN_MESSAGE,
-                   JOptionPane.QUESTION_MESSAGE,
-                   null,
-                   options,
-                   options[0]);
+//        int result = JOptionPane.showOptionDialog(null,
+//                   this,"Title",
+//                   JOptionPane.PLAIN_MESSAGE,
+//                   JOptionPane.QUESTION_MESSAGE,
+//                   null,
+//                   options,
+//                   options[0]);
+        int result = JOptionPane.showOptionDialog(null, this, 
+                "Search Inventory", JOptionPane.PLAIN_MESSAGE, 
+                JOptionPane.INFORMATION_MESSAGE, null, options, 
+                options[0]);
         
         
         // Logic for OKAY or CANCEL button press
@@ -76,6 +82,14 @@ public class SearchInventoryUI extends javax.swing.JPanel {
     
     private boolean ValidateInput() {
         return !searchIDField.getText().isEmpty();
+    }
+    
+    public static String ReturnFoundVehicleInformation() {
+        return foundVehicle.getMake() + " " + foundVehicle.getModel();
+    }
+    
+    public static Vehicle ReturnFoundVehicle() {
+        return foundVehicle;
     }
 
     /**
@@ -307,6 +321,10 @@ public class SearchInventoryUI extends javax.swing.JPanel {
 
 
             }
+                        
+            CarInventorySystem.setSearchResults(searchResults);
+            
+            foundVehicle = searchResults.get(0);
         }
         else
         {

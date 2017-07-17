@@ -13,31 +13,64 @@ public class CarInventorySystem
     
     private static ArrayList<Vehicle> carList;
     
-    public CarInventorySystem() throws FileNotFoundException 
+    private static ArrayList<Vehicle> searchResults;
+    
+    private File carBase;
+    
+    public CarInventorySystem() 
     {
         this.carList = new ArrayList(1000);
-        populateInitialList();
+        
+        searchResults = new ArrayList<>();
+        
+        carBase = new File("CarBase.txt");
+        
+        try {
+            populateInitialList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CarInventorySystem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void populateInitialList() throws FileNotFoundException{
         
         int i=0;
-        Scanner in = new Scanner(new File("Starter DB.txt"));
+        Scanner in = new Scanner(new File("CarBase.txt"));
+        in.useDelimiter(" ");
+        
         while(in.hasNextLine()){
-        Vehicle vehicle = new Vehicle();
-        vehicle.setID(Integer.parseInt(in.nextLine()));
-        vehicle.setMake(in.nextLine());
-        vehicle.setModel(in.nextLine());
-        vehicle.setColor(in.nextLine());
-        vehicle.setYear(Integer.parseInt(in.nextLine()));
-        vehicle.setCarClass(in.nextLine());
-        if(Integer.parseInt(in.nextLine()) == 0){
-            vehicle.setAvailability(false);
-        }
-        else{
-            vehicle.setAvailability(true);
-        }
-            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+            Vehicle vehicle = new Vehicle();
+            vehicle.setID(Integer.parseInt(in.next()));            
+            vehicle.setMake(in.next());
+            vehicle.setModel(in.next());
+            vehicle.setColor(in.next());
+            vehicle.setYear(Integer.parseInt(in.next()));
+            vehicle.setCarClass(in.next());
+            vehicle.setAvailability(Boolean.parseBoolean(in.next()));
+//            if(Integer.parseInt(in.next()) == 0) {
+//                vehicle.setAvailability(false);
+//            }
+//            else {
+//                vehicle.setAvailability(true);
+//            }
+            vehicle.setDailyPrice(Double.valueOf(in.nextLine()));
+            
+            
+//            vehicle.setID(Integer.parseInt(in.nextLine()));
+//            vehicle.setMake(in.nextLine());
+//            vehicle.setModel(in.nextLine());
+//            vehicle.setColor(in.nextLine());
+//            vehicle.setYear(Integer.parseInt(in.nextLine()));
+//            vehicle.setCarClass(in.nextLine());
+//            if(Integer.parseInt(in.nextLine()) == 0){
+//                vehicle.setAvailability(false);
+//            }
+//            else{
+//                vehicle.setAvailability(true);
+//            }
+//            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+            
+            carList.add(vehicle.getID(), vehicle);            
         }
         
         checkDBExists();
@@ -71,10 +104,10 @@ public class CarInventorySystem
         newVehicle.setDailyPrice(dailyPrice);
         
         // Using new UpdateDatabase Function
-        StoreVehicle(newVehicle);
+        StoreVehicle(newVehicle, false);
         
         // NOTE: This gives indexOutOfBounds if ID is NOT in order! Suggest using an array instead.
-        carList.add(newVehicle.getID(), newVehicle);
+//        carList.add(newVehicle.getID(), newVehicle);
         
         return newVehicle;
     }
@@ -161,16 +194,31 @@ public class CarInventorySystem
     
     
     
-    public void StoreVehicle(Vehicle newVehicle) 
+    public void StoreVehicle(Vehicle newVehicle, boolean toUpdate) 
     {
         // Using new UpdateDatabase Function
         try
         {
-            UpdateDatabase(newVehicle);
+            if(toUpdate) {
+                UpdateDatabase(newVehicle);
+            }
+            else {
+                FileWriter vehicleEntry = new FileWriter("CarBase.txt", true);
+                vehicleEntry.write(newVehicle.getID() + " " + newVehicle.getMake() + 
+                    " " + newVehicle.getModel() + " " + newVehicle.getColor() + 
+                    " " + newVehicle.getYear() + " " + newVehicle.getCarClass() + 
+                    " " + newVehicle.isAvailability() + " " + 
+                    newVehicle.getDailyPrice());
+                vehicleEntry.write(System.getProperty("line.separator"));
+                vehicleEntry.close();
+            }
         }
         catch(IOException e)
         {
             
+        }
+        catch(Exception ex) {
+            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
         /*
         try {
@@ -186,7 +234,7 @@ public class CarInventorySystem
        catch(Exception ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */      
+        */
     }
     
     // Overwrites a specific vehicle based on ID. Also sorts the database as a consequence.
@@ -266,8 +314,13 @@ public class CarInventorySystem
         }
         return retVal;
     }
+    
     public static int getSize()
     {
         return carList.size();
+    }
+    
+    public static void setSearchResults(ArrayList<Vehicle> searchResults) {
+        CarInventorySystem.searchResults = searchResults;
     }
 }

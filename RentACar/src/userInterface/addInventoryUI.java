@@ -32,27 +32,27 @@ public class addInventoryUI extends javax.swing.JPanel
         if (result == JOptionPane.OK_OPTION) 
         {
             
-            //See newRentalUI for more info (Same concepts applied)
-            Vehicle vehicle = new Vehicle();
-            vehicle.setMake(makeField.getText());
-            vehicle.setYear(Integer.parseInt(yearField.getText()));
-            vehicle.setModel(modelField.getText());
-            vehicle.setCarClass(classField.getText());
-            vehicle.setID(6); //Hardcoded ID
-            
-            Rental rTemp = new Rental();
-            rTemp.vehicle = vehicle;
-            rTemp.customer = null;
-            Rentacar.DBupdater(rTemp, 6); //6 is hardcoded ID
-            
-            //Testing
-            Rental rtemp2 = Rentacar.DBgetter(6);
-            System.out.println();
-            System.out.println("Car Information");
-            System.out.println("ID: " + rtemp2.vehicle.getID());
-            System.out.println("Make: " + rtemp2.vehicle.getMake());
-            System.out.println("Model: " + rtemp2.vehicle.getModel());
-            System.out.println("Year: " + rtemp2.vehicle.getYear());
+//            //See newRentalUI for more info (Same concepts applied)
+//            Vehicle vehicle = new Vehicle();
+//            vehicle.setMake(makeField.getText());
+//            vehicle.setYear(Integer.parseInt(yearField.getText()));
+//            vehicle.setModel(modelField.getText());
+//            vehicle.setCarClass(classField.getText());
+//            vehicle.setID(6); //Hardcoded ID
+//            
+//            Rental rTemp = new Rental();
+//            rTemp.vehicle = vehicle;
+//            rTemp.customer = null;
+//            Rentacar.DBupdater(rTemp, 6); //6 is hardcoded ID
+//            
+//            //Testing
+//            Rental rtemp2 = Rentacar.DBgetter(6);
+//            System.out.println();
+//            System.out.println("Car Information");
+//            System.out.println("ID: " + rtemp2.vehicle.getID());
+//            System.out.println("Make: " + rtemp2.vehicle.getMake());
+//            System.out.println("Model: " + rtemp2.vehicle.getModel());
+//            System.out.println("Year: " + rtemp2.vehicle.getYear());
             
         } 
         else 
