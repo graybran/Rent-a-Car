@@ -28,8 +28,8 @@ public class RentacarUI extends javax.swing.JFrame
 
         jMenuItem10 = new javax.swing.JMenuItem();
         welcomeLabel = new javax.swing.JLabel();
-        rentButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
+        rentButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -56,19 +56,19 @@ public class RentacarUI extends javax.swing.JFrame
         welcomeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         welcomeLabel.setText("Welcome to Rent-a-Car");
 
-        rentButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rentButton.setText("Return a car");
-        rentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rentButtonActionPerformed(evt);
-            }
-        });
-
         returnButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        returnButton.setText("Rent a car");
+        returnButton.setText("Return a car");
         returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnButtonActionPerformed(evt);
+            }
+        });
+
+        rentButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        rentButton.setText("Rent a car");
+        rentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rentButtonActionPerformed(evt);
             }
         });
 
@@ -95,6 +95,11 @@ public class RentacarUI extends javax.swing.JFrame
         rentalsMenu.add(newRentalMenu);
 
         newReturnRentalMenu.setText("Return Rental...");
+        newReturnRentalMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newReturnRentalMenuActionPerformed(evt);
+            }
+        });
         rentalsMenu.add(newReturnRentalMenu);
 
         viewRentalMenu.setText("View Rental...");
@@ -180,9 +185,9 @@ public class RentacarUI extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(welcomeLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -192,8 +197,8 @@ public class RentacarUI extends javax.swing.JFrame
                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -206,15 +211,15 @@ public class RentacarUI extends javax.swing.JFrame
         new newRentalUI();
     }//GEN-LAST:event_newRentalMenuActionPerformed
 
-    private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
-    {//GEN-HEADEREND:event_rentButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rentButtonActionPerformed
-
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_returnButtonActionPerformed
     {//GEN-HEADEREND:event_returnButtonActionPerformed
-        new newRentalUI();
+        new ReturnCarUI();
     }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
+    {//GEN-HEADEREND:event_rentButtonActionPerformed
+        new newRentalUI();
+    }//GEN-LAST:event_rentButtonActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem1ActionPerformed
     {//GEN-HEADEREND:event_jMenuItem1ActionPerformed
@@ -265,6 +270,10 @@ public class RentacarUI extends javax.swing.JFrame
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new SearchInventoryUI();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void newReturnRentalMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newReturnRentalMenuActionPerformed
+        new ReturnCarUI();
+    }//GEN-LAST:event_newReturnRentalMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu customerDataMenu;

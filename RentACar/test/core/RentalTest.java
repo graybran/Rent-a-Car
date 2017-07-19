@@ -16,9 +16,6 @@ public class RentalTest {
         InitalizeVehicle();
         
         testRental = new Rental(testVehicle, testCustomer);
-        
-//        testStartDate = "3 18 2017";
-//        testEndDate = "4 20 2017";
     }
 
     @Test

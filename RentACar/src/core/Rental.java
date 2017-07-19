@@ -39,8 +39,8 @@ public class Rental
         return rentals;
     }
     
-    public ArrayList RemoveRental() {
-        rentals.remove(this);
+    public ArrayList DeleteRental(Rental returnRental) {
+        rentals.remove(returnRental);
         return rentals;
     }
     
@@ -49,12 +49,14 @@ public class Rental
             FileWriter rentalWriter = new FileWriter("RentalBase.txt", true);
             
             for(Rental r:rentals) {
-                rentalWriter.write("Vehicle: " + r.vehicle.getMake() + " " + 
-                        r.vehicle.getModel() + " " + r.vehicle.getColor() + 
-                        " " + r.vehicle.getCarClass() + " | " + "Customer: " + 
+                rentalWriter.write(r.vehicle.getID() + " " + 
+                        r.vehicle.getMake() + " " + r.vehicle.getModel() + 
+                        " " + r.vehicle.getColor() + " " + r.vehicle.getYear() + 
+                        " " + r.vehicle.getCarClass() + " " + 
+                        r.vehicle.getDailyPrice() + " " + 
                         r.customer.getFirstName() + " " + 
-                        r.customer.getLastName() + " " + 
-                        r.customer.getPhoneNumber() + " " + 
+                        r.customer.getLastName() + " " + r.customer.getAge() + 
+                        " " + r.customer.getPhoneNumber() + " " + 
                         r.customer.getEmailAddress());
                 rentalWriter.write(System.getProperty("line.separator"));
             }

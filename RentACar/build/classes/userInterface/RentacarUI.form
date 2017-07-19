@@ -41,6 +41,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Return Rental..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newReturnRentalMenuActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="viewRentalMenu">
               <Properties>
@@ -158,9 +161,9 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="welcomeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="returnButton" min="-2" pref="162" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="rentButton" min="-2" pref="162" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="returnButton" min="-2" pref="162" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -174,8 +177,8 @@
               <Component id="welcomeLabel" min="-2" pref="83" max="-2" attributes="0"/>
               <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="returnButton" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
                   <Component id="rentButton" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="returnButton" alignment="3" min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -191,7 +194,7 @@
         <Property name="text" type="java.lang.String" value="Welcome to Rent-a-Car"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="rentButton">
+    <Component class="javax.swing.JButton" name="returnButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -199,10 +202,10 @@
         <Property name="text" type="java.lang.String" value="Return a car"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rentButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="returnButton">
+    <Component class="javax.swing.JButton" name="rentButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -210,7 +213,7 @@
         <Property name="text" type="java.lang.String" value="Rent a car"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rentButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

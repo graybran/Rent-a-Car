@@ -18,8 +18,6 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
         int result = JOptionPane.showConfirmDialog(null, this, "Update Inventory",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         
-        boolean toUpdate = true;
-        
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
@@ -59,12 +57,11 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
                     updateThisVehicle.setAvailability(availability);
                     updateThisVehicle.setDailyPrice(dailyPrice);
 
-                    // KEEP these lines
                     // Updates the database, overwriting old one
                     try
                     {
 //                        searchInventory.UpdateDatabase(updateThisVehicle, toUpdate);
-                        searchInventory.StoreVehicle(updateThisVehicle, toUpdate);
+                        searchInventory.StoreVehicle(updateThisVehicle, true);
                     }
                     catch(Exception e)
                     {
@@ -107,7 +104,6 @@ public class UpdateVehicleUI extends javax.swing.JPanel {
     {
         if(ValidateInput()) 
         {
-            // KEEP these lines
             CarInventorySystem searchInventory = new CarInventorySystem();
             Vehicle updateThisVehicle = searchInventory.SearchVehicle(Integer.parseInt(searchIDField.getText()));
 

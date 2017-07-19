@@ -112,11 +112,6 @@ public class CarInventorySystem
         return newVehicle;
     }
     
-    public void UpdateCar(Vehicle updateThisVehicle)
-    {
-        
-    }
-    
     public Vehicle SearchVehicle(int searchID) {
         ArrayList<ArrayList> vehicles = new ArrayList<>();
         ArrayList<Object> vehicleInformation = null;

@@ -62,14 +62,9 @@ public class NewVehicleUI extends javax.swing.JPanel {
     }
     
     private boolean ValidateIDConflict() {
-        try {
-            CarInventorySystem searchInventory = new CarInventorySystem();
-            Vehicle found = searchInventory.SearchVehicle(Integer.parseInt(idNumberField.getText()));
-            return found == null;
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(NewVehicleUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+        CarInventorySystem searchInventory = new CarInventorySystem();
+        Vehicle found = searchInventory.SearchVehicle(Integer.parseInt(idNumberField.getText()));
+        return found == null;
     }
 
     /**
