@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
 
 public class CarInventorySystem
 {
@@ -14,6 +15,8 @@ public class CarInventorySystem
     private static ArrayList<Vehicle> carList;
     
     private static ArrayList<Vehicle> searchResults;
+    
+    private static int curID;
     
     private File carBase;
     
@@ -53,7 +56,11 @@ public class CarInventorySystem
 //            else {
 //                vehicle.setAvailability(true);
 //            }
-            vehicle.setDailyPrice(Double.valueOf(in.nextLine()));
+            vehicle.setDailyPrice(Double.valueOf(in.next()));
+            vehicle.setGas(Double.parseDouble(in.next()));
+            vehicle.setMileage(Integer.parseInt(in.next()));
+            vehicle.setDmgNotes(in.nextLine());
+
             
             
 //            vehicle.setID(Integer.parseInt(in.nextLine()));
@@ -70,9 +77,11 @@ public class CarInventorySystem
 //            }
 //            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
             
-            carList.add(vehicle.getID(), vehicle);            
+            carList.add(vehicle.getID(), vehicle);  
+            i++;
         }
         
+        curID = i;
         checkDBExists();
     }
     
@@ -92,7 +101,8 @@ public class CarInventorySystem
     }
     
     public Vehicle AddCar(int ID, String brand, String model, String color, int year, 
-            String carClass, boolean availability, double dailyPrice) {
+            String carClass, boolean availability, double dailyPrice, double gas, int mileage, String dmgNotes) {
+        curID++;
         Vehicle newVehicle = new Vehicle();
         newVehicle.setID(ID);
         newVehicle.setMake(brand);
@@ -102,12 +112,16 @@ public class CarInventorySystem
         newVehicle.setCarClass(carClass);
         newVehicle.setAvailability(availability);
         newVehicle.setDailyPrice(dailyPrice);
+        newVehicle.setDmgNotes(dmgNotes);
+        newVehicle.setMileage(mileage);
+        newVehicle.setGas(gas);
         
         // Using new UpdateDatabase Function
         StoreVehicle(newVehicle, false);
         
         // NOTE: This gives indexOutOfBounds if ID is NOT in order! Suggest using an array instead.
-//        carList.add(newVehicle.getID(), newVehicle);
+        //NOTE2: added curID field that should update and fix 
+        carList.add(newVehicle.getID(), newVehicle);
         
         return newVehicle;
     }
@@ -203,7 +217,8 @@ public class CarInventorySystem
                     " " + newVehicle.getModel() + " " + newVehicle.getColor() + 
                     " " + newVehicle.getYear() + " " + newVehicle.getCarClass() + 
                     " " + newVehicle.isAvailability() + " " + 
-                    newVehicle.getDailyPrice());
+                    newVehicle.getDailyPrice() + " " + newVehicle.getGas() + " " + 
+                    newVehicle.getMileage() + " " + newVehicle.getDmgNotes());
                 vehicleEntry.write(System.getProperty("line.separator"));
                 vehicleEntry.close();
             }
@@ -317,5 +332,9 @@ public class CarInventorySystem
     
     public static void setSearchResults(ArrayList<Vehicle> searchResults) {
         CarInventorySystem.searchResults = searchResults;
+    }
+    
+    public static int getcurID(){
+        return curID;
     }
 }

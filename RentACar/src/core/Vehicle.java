@@ -14,6 +14,10 @@ public class Vehicle
     private String color;
     private boolean availability;
     private double dailyPrice;
+    private double gas; //percentage, .5 is half 1 is full
+    private int mileage;
+    private String dmgNotes;
+    
     
     private Customer customerRentedTo;
 
@@ -96,6 +100,28 @@ public class Vehicle
     {
         this.dailyPrice = dailyPrice;
     }
+    
+    public double getGas(){
+        return gas;
+    }
+    public void setGas(double gas){
+        this.gas = gas;
+    }
+    
+    public int getMileage(){
+        return mileage;
+    }
+    public void setMileage(int mileage){
+        this.mileage = mileage;
+    }
+    
+    public String getDmgNotes(){
+        return dmgNotes;
+    }
+    public void setDmgNotes(String dmgNotes){
+        this.dmgNotes = dmgNotes;
+    }
+    
     
     public Customer getCustomerRentedTo() {
         return customerRentedTo;
