@@ -22,7 +22,7 @@ public class ReturnCarUI extends javax.swing.JPanel {
             String lastName = lastNameField.getText();
             String damage = damageField.getText();
             int mileage = Integer.parseInt(mileageField.getText());
-            String gasLevel = gasField.getText();
+            Double gasLevel = Double.parseDouble(gasField.getText());
             
             Return newReturn = new Return();
             Rental foundRental = newReturn.SearchRental(firstName, lastName);
@@ -42,7 +42,14 @@ public class ReturnCarUI extends javax.swing.JPanel {
                 rentedVehicle.setCarClass(rentedVehicle.getCarClass());
                 rentedVehicle.setAvailability(true);
                 rentedVehicle.setDailyPrice(rentedVehicle.getDailyPrice());
+                rentedVehicle.setGas(gasLevel);
+                rentedVehicle.setDmgNotes(damage);
+                rentedVehicle.setMileage(mileage);
                 inventory.StoreVehicle(rentedVehicle, true);
+                
+                JOptionPane.showMessageDialog(null, "The return was "
+                        + "successful.", "Confirmation",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                 JOptionPane.showMessageDialog(null, "A rental under that "

@@ -103,6 +103,11 @@ public class RentacarUI extends javax.swing.JFrame
         rentalsMenu.add(newReturnRentalMenu);
 
         viewRentalMenu.setText("View Rental...");
+        viewRentalMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewRentalMenuActionPerformed(evt);
+            }
+        });
         rentalsMenu.add(viewRentalMenu);
 
         menuBar.add(rentalsMenu);
@@ -274,6 +279,10 @@ public class RentacarUI extends javax.swing.JFrame
     private void newReturnRentalMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newReturnRentalMenuActionPerformed
         new ReturnCarUI();
     }//GEN-LAST:event_newReturnRentalMenuActionPerformed
+
+    private void viewRentalMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRentalMenuActionPerformed
+        new ViewRentalsUI();
+    }//GEN-LAST:event_viewRentalMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu customerDataMenu;
