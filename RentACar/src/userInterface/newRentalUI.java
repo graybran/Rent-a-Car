@@ -2,15 +2,20 @@ package userInterface;
 
 import javax.swing.JOptionPane;
 import core.*;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import rentacar.*;
 
 public class newRentalUI extends javax.swing.JPanel
 {
+    
+    private String foundVehicleInformation;
 
     /**
      * Creates new form NewJPanel
@@ -28,11 +33,11 @@ public class newRentalUI extends javax.swing.JPanel
         {
             //Stores customer information from text fields
             //Search functionality isn't setup so I hardcoded a car choice there
-            Customer cTemp = new Customer();
-            cTemp.setAge(Integer.parseInt(ageField.getText()));
-            cTemp.setEmailAddress(emailField.getText());
-            cTemp.setFirstName(firstNameField.getText());
-            cTemp.setLastName(lastNameField.getText());
+//            Customer cTemp = new Customer();
+//            cTemp.setAge(Integer.parseInt(ageField.getText()));
+//            cTemp.setEmailAddress(emailField.getText());
+//            cTemp.setFirstName(firstNameField.getText());
+//            cTemp.setLastName(lastNameField.getText());
             //String car = carField.getText();
             //Integer ID = Integer.parseInt(car);
             
@@ -41,12 +46,57 @@ public class newRentalUI extends javax.swing.JPanel
 				
 				// Cost of rental
 				//double cost = calculateRentalCost(rentalDays, rtemp2.vehicle.getDailyPrice());
-				
+            
+            if(ValidateInput()) {
+                Customer rentCustomer = new Customer();
+                rentCustomer.setAge(Integer.parseInt(ageField.getText()));
+                rentCustomer.setEmailAddress(emailField.getText());
+                rentCustomer.setFirstName(firstNameField.getText());
+                rentCustomer.setLastName(lastNameField.getText());
+                rentCustomer.setPhoneNumber(phoneField.getText());
+                
+                CarInventorySystem inventory = new CarInventorySystem();
+                
+                Vehicle rentVehicle = SearchInventoryUI.ReturnFoundVehicle();
+                
+                if(rentCustomer.getAge() >= 18 && rentVehicle.isAvailability() == true) {
+                    Rental newRental = new Rental(rentVehicle, rentCustomer);
+                    newRental.AddRental();
+                    rentVehicle.setAvailability(false);
+                    newRental.PrintRentals();
+                    inventory.StoreVehicle(rentVehicle, true);
+                    
+                    JOptionPane.showMessageDialog(null, "The rental was "
+                            + "successful.", "Confirmation",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(rentVehicle.isAvailability() == false) {
+                    JOptionPane.showMessageDialog(null, "That vehicle is currently "
+                            + "rented. Please try again.", "Information", 
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(rentCustomer.getAge() < 18) {
+                    JOptionPane.showMessageDialog(null, "The customer must be at "
+                            + "least 18 years old to rent a car. Please try again.", 
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else {
+                if(carField.getText().equals("Please choose a vehicle")) {
+                    JOptionPane.showMessageDialog(null, "A vehicle to rent must be "
+                            + "chosen to complete the rental. Please choose "
+                            + "a vehicle.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Some fields are left blank. "
+                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
         else 
         {
             System.out.println("Cancelled");
-        }
+        }        
     }
 
     /**
@@ -187,6 +237,8 @@ public class newRentalUI extends javax.swing.JPanel
 
     private void searchCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCarButtonActionPerformed
         new SearchInventoryUI();
+        foundVehicleInformation = SearchInventoryUI.ReturnFoundVehicleInformation();
+        SetProperText();
     }//GEN-LAST:event_searchCarButtonActionPerformed
 
 
@@ -219,5 +271,30 @@ public class newRentalUI extends javax.swing.JPanel
 	{
 		return rentalDuration * price;
 	}
-*/	
+*/
+    
+    private void SetProperText() {
+        if(foundVehicleInformation != null) {
+            if(carField.getText().isEmpty()) {
+                carField.setText(foundVehicleInformation);
+            }
+            else {
+                carField.setText("");
+                carField.setText(foundVehicleInformation);
+            }
+        }
+        else {
+            carField.setText("");
+            carField.setText("Please choose a vehicle");
+        }
+    }
+
+    private boolean ValidateInput() {
+        if(firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || 
+                ageField.getText().isEmpty() || phoneField.getText().isEmpty() || 
+                emailField.getText().isEmpty() || carField.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }

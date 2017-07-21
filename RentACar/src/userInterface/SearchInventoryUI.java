@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 public class SearchInventoryUI extends javax.swing.JPanel {    
 
+    private static Vehicle foundVehicle;
+    
     /**
      * Creates new form SearchInventoryUI
      */
@@ -17,19 +19,30 @@ public class SearchInventoryUI extends javax.swing.JPanel {
         
         // Adds an "OK" dialog
         Object[] options = {"OK"};
-        int result = JOptionPane.showOptionDialog(null,
-                   this,"Title",
-                   JOptionPane.PLAIN_MESSAGE,
-                   JOptionPane.QUESTION_MESSAGE,
-                   null,
-                   options,
-                   options[0]);
+//        int result = JOptionPane.showOptionDialog(null,
+//                   this,"Title",
+//                   JOptionPane.PLAIN_MESSAGE,
+//                   JOptionPane.QUESTION_MESSAGE,
+//                   null,
+//                   options,
+//                   options[0]);
+        int result = JOptionPane.showOptionDialog(null, this, 
+                "Search Inventory", JOptionPane.PLAIN_MESSAGE, 
+                JOptionPane.INFORMATION_MESSAGE, null, options, 
+                options[0]);
         
         
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
             if(ValidateInput()) {
+                
+                if(searchResultArea.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "No search was "
+                            + "performed. Please try again.", "Information", 
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                
                 //int searchID = Integer.parseInt(searchIDField.getText());
                 
 //                    CarInventorySystem inventory = new CarInventorySystem();
@@ -51,10 +64,10 @@ public class SearchInventoryUI extends javax.swing.JPanel {
 //                                        JOptionPane.ERROR_MESSAGE);
 //                    }
             }
-            else {
-                JOptionPane.showMessageDialog(null, "The ID field is blank. "
-                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+//            else {
+//                JOptionPane.showMessageDialog(null, "The ID field is blank. "
+//                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
             
             
 //            Customer addedCustomer = new Customer();
@@ -71,11 +84,29 @@ public class SearchInventoryUI extends javax.swing.JPanel {
         else 
         {
             System.out.println("Cancelled");
+            
+            if(foundVehicle != null) {
+                foundVehicle = null;
+            }
         }
     }
     
     private boolean ValidateInput() {
         return !searchIDField.getText().isEmpty();
+    }
+    
+    public static String ReturnFoundVehicleInformation() {
+        if(foundVehicle != null) {
+            return foundVehicle.getMake() + " " + foundVehicle.getModel();
+        }
+        return null;
+    }
+    
+    public static Vehicle ReturnFoundVehicle() {
+        if(foundVehicle != null) {
+            return foundVehicle;
+        }
+        return null;
     }
 
     /**
@@ -192,15 +223,31 @@ public class SearchInventoryUI extends javax.swing.JPanel {
     }//GEN-LAST:event_searchIDFieldActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-           
+
+        
         //Currently only lists one item
         //Also lots of formatting to be done
         String comboInput = searchBySelection.getSelectedItem().toString();
+        
+        if(searchIDField.getText().isEmpty()) {
+            if(comboInput.equals("ID")) {
+                JOptionPane.showMessageDialog(null, "Please enter an ID.", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please enter a "
+                        + comboInput + ".", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return;
+        }
+        
         int i=0;
         Vehicle arrayElement;
         int size = CarInventorySystem.getSize();
-        boolean flag = false;
+        boolean flag = false;        
         ArrayList<Vehicle> searchResults = new ArrayList();
+        
+        CarInventorySystem inventory = new CarInventorySystem();
 
         if(comboInput.equals("ID")){
             int id = Integer.parseInt(searchIDField.getText());
@@ -307,6 +354,10 @@ public class SearchInventoryUI extends javax.swing.JPanel {
 
 
             }
+                        
+            CarInventorySystem.setSearchResults(searchResults);
+            
+            foundVehicle = searchResults.get(0);
         }
         else
         {

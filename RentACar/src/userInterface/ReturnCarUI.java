@@ -1,40 +1,74 @@
 package userInterface;
 
 import core.CarInventorySystem;
+import core.Rental;
+import core.Return;
 import core.Vehicle;
 import javax.swing.JOptionPane;
 
 public class ReturnCarUI extends javax.swing.JPanel {
     
-    public ReturnCarUI() 
-	 {
+    public ReturnCarUI() {
         initComponents();
         
-		  // Adds an "OK" and "CANCEL" dialog
+	// Adds an "OK" and "CANCEL" dialog
         int result = JOptionPane.showConfirmDialog(null, this, "Return Rental",
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		  
-		  // Logic for OKAY or CANCEL button press
+	// Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
         {
-			  int ID = Integer.parseInt(carIDField.getText());
-			  String damage = DamageField.getText();
-			  int mileage = Integer.parseInt(MileageField.getText());
-			  String gasLevel = GasField.getText();
-			  
-			  // Search for car using car's ID
-			  // Search not yet available, use a temporary Vehicle
-			  
-			  /*
-			  // Update damage, mileage, and gas level
-			  Vehicle tempCar = new Vehicle(); 
-			  tempCar.setNewDamage(damage);
-			  tempCar.setMileage(mileage);
-			  tempCar.setGasLevel(gasLevel);
-			  */
-		  }
-		  else 
-        {
+            String firstName = firstNameField.getText();
+            String lastName = lastNameField.getText();
+            String damage = damageField.getText();
+            int mileage = Integer.parseInt(mileageField.getText());
+            Double gasLevel = Double.parseDouble(gasField.getText());
+            
+            Return newReturn = new Return();
+            Rental foundRental = newReturn.SearchRental(firstName, lastName);
+            
+            if(foundRental != null) {
+                CarInventorySystem inventory = new CarInventorySystem();
+                Vehicle rentedVehicle = foundRental.vehicle;
+
+                newReturn.DeleteFoundRental(foundRental);
+                newReturn.PrintRentalReturns();
+                
+                rentedVehicle.setID(rentedVehicle.getID());
+                rentedVehicle.setMake(rentedVehicle.getMake());
+                rentedVehicle.setModel(rentedVehicle.getModel());
+                rentedVehicle.setColor(rentedVehicle.getColor());
+                rentedVehicle.setYear(rentedVehicle.getYear());
+                rentedVehicle.setCarClass(rentedVehicle.getCarClass());
+                rentedVehicle.setAvailability(true);
+                rentedVehicle.setDailyPrice(rentedVehicle.getDailyPrice());
+                rentedVehicle.setGas(gasLevel);
+                rentedVehicle.setDmgNotes(damage);
+                rentedVehicle.setMileage(mileage);
+                inventory.StoreVehicle(rentedVehicle, true);
+                
+                JOptionPane.showMessageDialog(null, "The return was "
+                        + "successful.", "Confirmation",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "A rental under that "
+                        + "name does not exist. Please try again.", "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+//			  
+//			  // Search for car using car's ID
+//			  // Search not yet available, use a temporary Vehicle
+//			  
+//			  /*
+//			  // Update damage, mileage, and gas level
+//			  Vehicle tempCar = new Vehicle(); 
+//			  tempCar.setNewDamage(damage);
+//			  tempCar.setMileage(mileage);
+//			  tempCar.setGasLevel(gasLevel);
+//			  */
+	}
+	else {
             System.out.println("Cancelled");
         }
     }
@@ -46,41 +80,116 @@ public class ReturnCarUI extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
-        MileageLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        firstNameLabel = new javax.swing.JLabel();
+        firstNameField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lastNameField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         DamageLabel = new javax.swing.JLabel();
+        damageField = new javax.swing.JTextField();
+        MileageLabel = new javax.swing.JLabel();
+        mileageField = new javax.swing.JTextField();
         GasLabel = new javax.swing.JLabel();
-        DamageField = new javax.swing.JTextField();
-        MileageField = new javax.swing.JTextField();
-        GasField = new javax.swing.JTextField();
-        carIDLabel = new javax.swing.JLabel();
-        carIDField = new javax.swing.JTextField();
+        gasField = new javax.swing.JTextField();
 
-        MileageLabel.setText("Mileage");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Search"));
+
+        firstNameLabel.setText("First Name");
+
+        firstNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Last Name");
+
+        lastNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstNameLabel)
+                    .addComponent(jLabel1))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lastNameField)
+                    .addComponent(firstNameField))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameLabel)
+                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Update"));
 
         DamageLabel.setText("Damage");
 
-        GasLabel.setText("Gas level");
-
-        DamageField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                DamageFieldActionPerformed(evt);
+        damageField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                damageFieldActionPerformed(evt);
             }
         });
 
-        carIDLabel.setText("CarID");
+        MileageLabel.setText("Mileage");
 
-        carIDField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                carIDFieldActionPerformed(evt);
-            }
-        });
+        GasLabel.setText("Gas Level");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(MileageLabel)
+                    .addComponent(DamageLabel)
+                    .addComponent(GasLabel))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(damageField, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(mileageField)
+                    .addComponent(gasField))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DamageLabel)
+                    .addComponent(damageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MileageLabel)
+                    .addComponent(mileageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GasLabel)
+                    .addComponent(gasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,64 +198,46 @@ public class ReturnCarUI extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(MileageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MileageField, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(GasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(GasField, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(carIDLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DamageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DamageField, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(carIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DamageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DamageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MileageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MileageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-   private void DamageFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DamageFieldActionPerformed
+   private void damageFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_damageFieldActionPerformed
       // TODO add your handling code here:
-   }//GEN-LAST:event_DamageFieldActionPerformed
+   }//GEN-LAST:event_damageFieldActionPerformed
 
-   private void carIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carIDFieldActionPerformed
+   private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
       // TODO add your handling code here:
-   }//GEN-LAST:event_carIDFieldActionPerformed
+   }//GEN-LAST:event_firstNameFieldActionPerformed
+
+    private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DamageField;
     private javax.swing.JLabel DamageLabel;
-    private javax.swing.JTextField GasField;
     private javax.swing.JLabel GasLabel;
-    private javax.swing.JTextField MileageField;
     private javax.swing.JLabel MileageLabel;
-    private javax.swing.JTextField carIDField;
-    private javax.swing.JLabel carIDLabel;
+    private javax.swing.JTextField damageField;
+    private javax.swing.JTextField firstNameField;
+    private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JTextField gasField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField lastNameField;
+    private javax.swing.JTextField mileageField;
     // End of variables declaration//GEN-END:variables
 }

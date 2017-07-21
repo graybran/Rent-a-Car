@@ -3,43 +3,87 @@ package core;
 import java.io.*;
 import java.nio.charset.*;
 import java.nio.file.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
 
 public class CarInventorySystem
 {
     
     private static ArrayList<Vehicle> carList;
     
-    public CarInventorySystem() throws FileNotFoundException 
+    private static ArrayList<Vehicle> searchResults;
+    
+    private static int curID;
+    
+    private File carBase;
+    
+    public CarInventorySystem() 
     {
         this.carList = new ArrayList(1000);
-        populateInitialList();
+        
+        searchResults = new ArrayList<>();
+        
+        carBase = new File("CarBase.txt");
+        
+        try {
+            populateInitialList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CarInventorySystem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void populateInitialList() throws FileNotFoundException{
         
         int i=0;
-        Scanner in = new Scanner(new File("Starter DB.txt"));
+        Scanner in = new Scanner(new File("CarBase.txt"));
+        in.useDelimiter(" ");
+        
         while(in.hasNextLine()){
-        Vehicle vehicle = new Vehicle();
-        vehicle.setID(Integer.parseInt(in.nextLine()));
-        vehicle.setMake(in.nextLine());
-        vehicle.setModel(in.nextLine());
-        vehicle.setColor(in.nextLine());
-        vehicle.setYear(Integer.parseInt(in.nextLine()));
-        vehicle.setCarClass(in.nextLine());
-        if(Integer.parseInt(in.nextLine()) == 0){
-            vehicle.setAvailability(false);
-        }
-        else{
-            vehicle.setAvailability(true);
-        }
-            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+            Vehicle vehicle = new Vehicle();
+            vehicle.setID(Integer.parseInt(in.next()));            
+            vehicle.setMake(in.next());
+            vehicle.setModel(in.next());
+            vehicle.setColor(in.next());
+            vehicle.setYear(Integer.parseInt(in.next()));
+            vehicle.setCarClass(in.next());
+            vehicle.setAvailability(Boolean.parseBoolean(in.next()));
+//            if(Integer.parseInt(in.next()) == 0) {
+//                vehicle.setAvailability(false);
+//            }
+//            else {
+//                vehicle.setAvailability(true);
+//            }
+            vehicle.setDailyPrice(Double.valueOf(in.next()));
+            vehicle.setGas(Double.parseDouble(in.next()));
+            vehicle.setMileage(Integer.parseInt(in.next()));
+            vehicle.setDmgNotes(in.nextLine());
+
+            
+            
+//            vehicle.setID(Integer.parseInt(in.nextLine()));
+//            vehicle.setMake(in.nextLine());
+//            vehicle.setModel(in.nextLine());
+//            vehicle.setColor(in.nextLine());
+//            vehicle.setYear(Integer.parseInt(in.nextLine()));
+//            vehicle.setCarClass(in.nextLine());
+//            if(Integer.parseInt(in.nextLine()) == 0){
+//                vehicle.setAvailability(false);
+//            }
+//            else{
+//                vehicle.setAvailability(true);
+//            }
+//            vehicle.setDailyPrice(Double.parseDouble(in.nextLine()));
+            
+            carList.add(vehicle.getID(), vehicle);  
+            i++;
         }
         
+        curID = i;
         checkDBExists();
     }
     
@@ -59,7 +103,8 @@ public class CarInventorySystem
     }
     
     public Vehicle AddCar(int ID, String brand, String model, String color, int year, 
-            String carClass, boolean availability, double dailyPrice) {
+            String carClass, boolean availability, double dailyPrice, double gas, int mileage, String dmgNotes, Date maintenance) {
+        curID++;
         Vehicle newVehicle = new Vehicle();
         newVehicle.setID(ID);
         newVehicle.setMake(brand);
@@ -69,19 +114,19 @@ public class CarInventorySystem
         newVehicle.setCarClass(carClass);
         newVehicle.setAvailability(availability);
         newVehicle.setDailyPrice(dailyPrice);
+        newVehicle.setDmgNotes(dmgNotes);
+        newVehicle.setMileage(mileage);
+        newVehicle.setGas(gas);
+        newVehicle.setNextMaintenance(maintenance);
         
         // Using new UpdateDatabase Function
-        StoreVehicle(newVehicle);
+        StoreVehicle(newVehicle, false);
         
         // NOTE: This gives indexOutOfBounds if ID is NOT in order! Suggest using an array instead.
+        //NOTE2: added curID field that should update and fix 
         carList.add(newVehicle.getID(), newVehicle);
         
         return newVehicle;
-    }
-    
-    public void UpdateCar(Vehicle updateThisVehicle)
-    {
-        
     }
     
     public Vehicle SearchVehicle(int searchID) {
@@ -147,6 +192,8 @@ public class CarInventorySystem
     
     public Vehicle InitializeVehicleInformation(ArrayList vehicleInformation) {
         Vehicle foundVehicle = new Vehicle();
+        SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+        String maintenance = vehicleInformation.get(10).toString();
         
         foundVehicle.setMake(vehicleInformation.get(1).toString());
         foundVehicle.setModel(vehicleInformation.get(2).toString());
@@ -155,22 +202,58 @@ public class CarInventorySystem
         foundVehicle.setCarClass(vehicleInformation.get(5).toString());
         foundVehicle.setAvailability(vehicleInformation.get(6).toString().equals("1"));
         foundVehicle.setDailyPrice(Double.parseDouble(vehicleInformation.get(7).toString()));
+        foundVehicle.setGas(Double.parseDouble(vehicleInformation.get(8).toString()));
+        foundVehicle.setMileage(Integer.parseInt(vehicleInformation.get(9).toString()));
+        
+        // Formats string to date object for maintenance date
+        try
+        {
+            foundVehicle.setNextMaintenance(format.parse(maintenance));
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        
+        // For damage notes
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 11; i < vehicleInformation.size(); i++)
+            sb.append(vehicleInformation.get(i).toString()).append(" ");
+            
+        foundVehicle.setDmgNotes(sb.toString());
         
         return foundVehicle;
     }
     
     
-    
-    public void StoreVehicle(Vehicle newVehicle) 
+    public void StoreVehicle(Vehicle newVehicle, boolean toUpdate) 
     {
         // Using new UpdateDatabase Function
         try
         {
-            UpdateDatabase(newVehicle);
+            if(toUpdate) {
+                UpdateDatabase(newVehicle);
+            }
+            else {
+                FileWriter vehicleEntry = new FileWriter("CarBase.txt", true);
+                vehicleEntry.write(newVehicle.getID() + " " + newVehicle.getMake() + 
+                    " " + newVehicle.getModel() + " " + newVehicle.getColor() + 
+                    " " + newVehicle.getYear() + " " + newVehicle.getCarClass() + 
+                    " " + newVehicle.isAvailability() + " " + 
+                    newVehicle.getDailyPrice() + " " + newVehicle.getGas() + " " + 
+                    newVehicle.getMileage() + " " + dateToString(newVehicle) + 
+                    " " + newVehicle.getDmgNotes());
+                vehicleEntry.write(System.getProperty("line.separator"));
+                vehicleEntry.close();
+            }
         }
         catch(IOException e)
         {
             
+        }
+        catch(Exception ex) {
+            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
         /*
         try {
@@ -186,7 +269,7 @@ public class CarInventorySystem
        catch(Exception ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */      
+        */
     }
     
     // Overwrites a specific vehicle based on ID. Also sorts the database as a consequence.
@@ -228,6 +311,10 @@ public class CarInventorySystem
         sb.append(insertThisVehicle.getCarClass()).append(" ");
         sb.append(Boolean.toString(insertThisVehicle.isAvailability())).append(" ");
         sb.append(insertThisVehicle.getDailyPrice()).append(" ");
+        sb.append(insertThisVehicle.getGas()).append(" ");
+        sb.append(insertThisVehicle.getMileage()).append(" ");
+        sb.append(dateToString(insertThisVehicle)).append(" ");
+        sb.append(insertThisVehicle.getDmgNotes()).append(" ");
         
         return sb.toString();
     }
@@ -252,6 +339,15 @@ public class CarInventorySystem
         out.close();
     }
     
+    // Convert Date object in vehicle to String
+    private String dateToString(Vehicle vehicle)
+    {
+        SimpleDateFormat format = new SimpleDateFormat("MMddyyyy"); 
+        String maintenance = format.format(vehicle.getNextMaintenance());
+        
+        return maintenance;
+    }
+    
     public static Vehicle getCar(int id)
     {
         Vehicle retVal;
@@ -266,8 +362,17 @@ public class CarInventorySystem
         }
         return retVal;
     }
+    
     public static int getSize()
     {
         return carList.size();
+    }
+    
+    public static void setSearchResults(ArrayList<Vehicle> searchResults) {
+        CarInventorySystem.searchResults = searchResults;
+    }
+    
+    public static int getcurID(){
+        return curID;
     }
 }

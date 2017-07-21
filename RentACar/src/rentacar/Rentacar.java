@@ -21,9 +21,11 @@ public class Rentacar
         try {
             File customerBase = new File("CustomerBase.txt");
             File carBase = new File("CarBase.txt");
+            File rentalBase = new File("RentalBase.txt");
             
             customerBase.createNewFile();
             carBase.createNewFile();
+            rentalBase.createNewFile();
         }
         catch(Exception ex) {
             System.out.println("Error: Could not create files. " + 

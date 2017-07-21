@@ -24,29 +24,31 @@ public class RentacarUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jMenuItem10 = new javax.swing.JMenuItem();
         welcomeLabel = new javax.swing.JLabel();
-        rentButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
+        rentButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        quitMenuItem = new javax.swing.JMenuItem();
         rentalsMenu = new javax.swing.JMenu();
         newRentalMenu = new javax.swing.JMenuItem();
         newReturnRentalMenu = new javax.swing.JMenuItem();
         viewRentalMenu = new javax.swing.JMenuItem();
         inventoryMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        addInventoryMenuItem = new javax.swing.JMenuItem();
+        searchInventoryMenuItem = new javax.swing.JMenuItem();
+        updateInventoryMenuItem = new javax.swing.JMenuItem();
+        viewInventoryMenuItem = new javax.swing.JMenuItem();
         customerDataMenu = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        addCustomerMenuItem = new javax.swing.JMenuItem();
+        searchCustomerMenuItem = new javax.swing.JMenuItem();
+        updateCustomerMenuItem = new javax.swing.JMenuItem();
+        viewCustomerMenuItem = new javax.swing.JMenuItem();
 
         jMenuItem10.setText("jMenuItem10");
 
@@ -56,116 +58,154 @@ public class RentacarUI extends javax.swing.JFrame
         welcomeLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         welcomeLabel.setText("Welcome to Rent-a-Car");
 
-        rentButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rentButton.setText("Return a car");
-        rentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rentButtonActionPerformed(evt);
-            }
-        });
-
         returnButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        returnButton.setText("Rent a car");
-        returnButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        returnButton.setText("Return a car");
+        returnButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 returnButtonActionPerformed(evt);
             }
         });
 
-        fileMenu.setText("File");
-
-        jMenuItem13.setText("Quit");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+        rentButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        rentButton.setText("Rent a car");
+        rentButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                rentButtonActionPerformed(evt);
             }
         });
-        fileMenu.add(jMenuItem13);
+
+        jButton1.setText("Attention!");
+
+        fileMenu.setText("File");
+
+        quitMenuItem.setText("Quit");
+        quitMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                quitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(quitMenuItem);
 
         menuBar.add(fileMenu);
 
         rentalsMenu.setText("Rentals");
 
         newRentalMenu.setText("New Rental...");
-        newRentalMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        newRentalMenu.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 newRentalMenuActionPerformed(evt);
             }
         });
         rentalsMenu.add(newRentalMenu);
 
         newReturnRentalMenu.setText("Return Rental...");
+        newReturnRentalMenu.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                newReturnRentalMenuActionPerformed(evt);
+            }
+        });
         rentalsMenu.add(newReturnRentalMenu);
 
         viewRentalMenu.setText("View Rental...");
+        viewRentalMenu.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                viewRentalMenuActionPerformed(evt);
+            }
+        });
         rentalsMenu.add(viewRentalMenu);
 
         menuBar.add(rentalsMenu);
 
         inventoryMenu.setText("Inventory");
 
-        jMenuItem1.setText("Add inventory...");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        addInventoryMenuItem.setText("Add inventory...");
+        addInventoryMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                addInventoryMenuItemActionPerformed(evt);
             }
         });
-        inventoryMenu.add(jMenuItem1);
+        inventoryMenu.add(addInventoryMenuItem);
 
-        jMenuItem2.setText("Search Inventory...");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+        searchInventoryMenuItem.setText("Search Inventory...");
+        searchInventoryMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                searchInventoryMenuItemActionPerformed(evt);
             }
         });
-        inventoryMenu.add(jMenuItem2);
+        inventoryMenu.add(searchInventoryMenuItem);
 
-        jMenuItem7.setText("Update Inventory...");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+        updateInventoryMenuItem.setText("Update Inventory...");
+        updateInventoryMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                updateInventoryMenuItemActionPerformed(evt);
             }
         });
-        inventoryMenu.add(jMenuItem7);
+        inventoryMenu.add(updateInventoryMenuItem);
 
-        jMenuItem5.setText("View Inventory...");
-        inventoryMenu.add(jMenuItem5);
+        viewInventoryMenuItem.setText("View Inventory...");
+        inventoryMenu.add(viewInventoryMenuItem);
 
         menuBar.add(inventoryMenu);
 
         customerDataMenu.setText("Customer Data");
 
-        jMenuItem3.setText("Add customer...");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+        addCustomerMenuItem.setText("Add customer...");
+        addCustomerMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                addCustomerMenuItemActionPerformed(evt);
             }
         });
-        customerDataMenu.add(jMenuItem3);
+        customerDataMenu.add(addCustomerMenuItem);
 
-        jMenuItem4.setText("Search customer...");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+        searchCustomerMenuItem.setText("Search customer...");
+        searchCustomerMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                searchCustomerMenuItemActionPerformed(evt);
             }
         });
-        customerDataMenu.add(jMenuItem4);
+        customerDataMenu.add(searchCustomerMenuItem);
 
-        jMenuItem8.setText("Update customer...");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+        updateCustomerMenuItem.setText("Update customer...");
+        updateCustomerMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                updateCustomerMenuItemActionPerformed(evt);
             }
         });
-        customerDataMenu.add(jMenuItem8);
+        customerDataMenu.add(updateCustomerMenuItem);
 
-        jMenuItem6.setText("View customers...");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+        viewCustomerMenuItem.setText("View customers...");
+        viewCustomerMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                viewCustomerMenuItemActionPerformed(evt);
             }
         });
-        customerDataMenu.add(jMenuItem6);
+        customerDataMenu.add(viewCustomerMenuItem);
 
         menuBar.add(customerDataMenu);
 
@@ -180,20 +220,26 @@ public class RentacarUI extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(welcomeLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(20, 20, 20)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -206,82 +252,95 @@ public class RentacarUI extends javax.swing.JFrame
         new newRentalUI();
     }//GEN-LAST:event_newRentalMenuActionPerformed
 
-    private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
-    {//GEN-HEADEREND:event_rentButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rentButtonActionPerformed
-
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_returnButtonActionPerformed
     {//GEN-HEADEREND:event_returnButtonActionPerformed
-        new newRentalUI();
+        new ReturnCarUI();
     }//GEN-LAST:event_returnButtonActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem1ActionPerformed
-    {//GEN-HEADEREND:event_jMenuItem1ActionPerformed
+    private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
+    {//GEN-HEADEREND:event_rentButtonActionPerformed
+        new newRentalUI();
+    }//GEN-LAST:event_rentButtonActionPerformed
+
+    private void addInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addInventoryMenuItemActionPerformed
+    {//GEN-HEADEREND:event_addInventoryMenuItemActionPerformed
         try {
             new NewVehicleUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_addInventoryMenuItemActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        new UpdateVehicleUI();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void updateInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryMenuItemActionPerformed
+        try {
+            new UpdateVehicleUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_updateInventoryMenuItemActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void addCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerMenuItemActionPerformed
         try {
             new newCustomerUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_addCustomerMenuItemActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    private void quitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitMenuItemActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_quitMenuItemActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void updateCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerMenuItemActionPerformed
         try {
             new UpdateCustomerUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_updateCustomerMenuItemActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void viewCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_viewCustomerMenuItemActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void searchCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCustomerMenuItemActionPerformed
         new SearchCustomerUI();
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_searchCustomerMenuItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void searchInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryMenuItemActionPerformed
         new SearchInventoryUI();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_searchInventoryMenuItemActionPerformed
+
+    private void newReturnRentalMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newReturnRentalMenuActionPerformed
+        new ReturnCarUI();
+    }//GEN-LAST:event_newReturnRentalMenuActionPerformed
+
+    private void viewRentalMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRentalMenuActionPerformed
+        new ViewRentalsUI();
+    }//GEN-LAST:event_viewRentalMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addCustomerMenuItem;
+    private javax.swing.JMenuItem addInventoryMenuItem;
     private javax.swing.JMenu customerDataMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventoryMenu;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newRentalMenu;
     private javax.swing.JMenuItem newReturnRentalMenu;
+    private javax.swing.JMenuItem quitMenuItem;
     private javax.swing.JButton rentButton;
     private javax.swing.JMenu rentalsMenu;
     private javax.swing.JButton returnButton;
+    private javax.swing.JMenuItem searchCustomerMenuItem;
+    private javax.swing.JMenuItem searchInventoryMenuItem;
+    private javax.swing.JMenuItem updateCustomerMenuItem;
+    private javax.swing.JMenuItem updateInventoryMenuItem;
+    private javax.swing.JMenuItem viewCustomerMenuItem;
+    private javax.swing.JMenuItem viewInventoryMenuItem;
     private javax.swing.JMenuItem viewRentalMenu;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
