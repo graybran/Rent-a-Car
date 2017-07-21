@@ -1,1 +1,3 @@
-0 Ford F150 White 2016 Truck true 65.45 
+0 Ford F150 White 2016 Truck false 65.45 0.5 10000 N/A
+1 Jeep Cherokee Black 1999 Truck true 50.0 0.5 9000 Just old
+2 VW Jetta Black 2017 Sedan true 22.0 0.9 1000 Tons of dmg, throw it away
