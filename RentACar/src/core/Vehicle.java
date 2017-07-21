@@ -1,6 +1,7 @@
 package core;
 
 import java.io.FileWriter;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +18,7 @@ public class Vehicle
     private double gas; //percentage, .5 is half 1 is full
     private int mileage;
     private String dmgNotes;
-    
+    private Date nextMaintenance;
     
     private Customer customerRentedTo;
 
@@ -129,5 +130,15 @@ public class Vehicle
 
     public void setCustomerRentedTo(Customer customerRentedTo) {
         this.customerRentedTo = customerRentedTo;
+    }
+
+    public Date getNextMaintenance()
+    {
+        return nextMaintenance;
+    }
+
+    public void setNextMaintenance(Date nextMaintenance)
+    {
+        this.nextMaintenance = nextMaintenance;
     }
 }

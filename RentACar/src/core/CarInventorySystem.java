@@ -3,6 +3,8 @@ package core;
 import java.io.*;
 import java.nio.charset.*;
 import java.nio.file.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -101,7 +103,7 @@ public class CarInventorySystem
     }
     
     public Vehicle AddCar(int ID, String brand, String model, String color, int year, 
-            String carClass, boolean availability, double dailyPrice, double gas, int mileage, String dmgNotes) {
+            String carClass, boolean availability, double dailyPrice, double gas, int mileage, String dmgNotes, Date maintenance) {
         curID++;
         Vehicle newVehicle = new Vehicle();
         newVehicle.setID(ID);
@@ -115,6 +117,7 @@ public class CarInventorySystem
         newVehicle.setDmgNotes(dmgNotes);
         newVehicle.setMileage(mileage);
         newVehicle.setGas(gas);
+        newVehicle.setNextMaintenance(maintenance);
         
         // Using new UpdateDatabase Function
         StoreVehicle(newVehicle, false);
@@ -189,6 +192,8 @@ public class CarInventorySystem
     
     public Vehicle InitializeVehicleInformation(ArrayList vehicleInformation) {
         Vehicle foundVehicle = new Vehicle();
+        SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+        String maintenance = vehicleInformation.get(10).toString();
         
         foundVehicle.setMake(vehicleInformation.get(1).toString());
         foundVehicle.setModel(vehicleInformation.get(2).toString());
@@ -199,11 +204,27 @@ public class CarInventorySystem
         foundVehicle.setDailyPrice(Double.parseDouble(vehicleInformation.get(7).toString()));
         foundVehicle.setGas(Double.parseDouble(vehicleInformation.get(8).toString()));
         foundVehicle.setMileage(Integer.parseInt(vehicleInformation.get(9).toString()));
-        foundVehicle.setDmgNotes(vehicleInformation.get(10).toString()); //I'm unsure if this will grab all of the dmg notes (may be first token only)
+        
+        // Formats string to date object for maintenance date
+        try
+        {
+            foundVehicle.setNextMaintenance(format.parse(maintenance));
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        
+        // For damage notes
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 11; i < vehicleInformation.size(); i++)
+            sb.append(vehicleInformation.get(i).toString()).append(" ");
+            
+        foundVehicle.setDmgNotes(sb.toString());
         
         return foundVehicle;
     }
-    
     
     
     public void StoreVehicle(Vehicle newVehicle, boolean toUpdate) 
@@ -221,7 +242,8 @@ public class CarInventorySystem
                     " " + newVehicle.getYear() + " " + newVehicle.getCarClass() + 
                     " " + newVehicle.isAvailability() + " " + 
                     newVehicle.getDailyPrice() + " " + newVehicle.getGas() + " " + 
-                    newVehicle.getMileage() + " " + newVehicle.getDmgNotes());
+                    newVehicle.getMileage() + " " + dateToString(newVehicle) + 
+                    " " + newVehicle.getDmgNotes());
                 vehicleEntry.write(System.getProperty("line.separator"));
                 vehicleEntry.close();
             }
@@ -291,6 +313,7 @@ public class CarInventorySystem
         sb.append(insertThisVehicle.getDailyPrice()).append(" ");
         sb.append(insertThisVehicle.getGas()).append(" ");
         sb.append(insertThisVehicle.getMileage()).append(" ");
+        sb.append(dateToString(insertThisVehicle)).append(" ");
         sb.append(insertThisVehicle.getDmgNotes()).append(" ");
         
         return sb.toString();
@@ -314,6 +337,15 @@ public class CarInventorySystem
         }
         
         out.close();
+    }
+    
+    // Convert Date object in vehicle to String
+    private String dateToString(Vehicle vehicle)
+    {
+        SimpleDateFormat format = new SimpleDateFormat("MMddyyyy"); 
+        String maintenance = format.format(vehicle.getNextMaintenance());
+        
+        return maintenance;
     }
     
     public static Vehicle getCar(int id)

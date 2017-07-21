@@ -3,6 +3,8 @@ package userInterface;
 import core.CarInventorySystem;
 import core.Vehicle;
 import java.io.FileNotFoundException;
+import java.text.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,11 +32,23 @@ public class NewVehicleUI extends javax.swing.JPanel {
                     double gas = Double.parseDouble(gasField.getText());
                     int mileage = Integer.parseInt(mileageField.getText());
                     String dmgNotes = dmgNotesField.getText();
+                    
+                    SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+                    Date maintenance = null;
+                    
+                    try 
+                    {
+                        maintenance = format.parse(maintenanceField.getText());
+                    } 
+                    catch (ParseException e) 
+                    {
+                        e.printStackTrace();
+                    }
                                             
                         //KEEP these lines
                         CarInventorySystem inventory = new CarInventorySystem();
                         inventory.AddCar(id, make, model, color, year, carClass, 
-                                true, dailyPrice, gas, mileage, dmgNotes);
+                                true, dailyPrice, gas, mileage, dmgNotes, maintenance);
                 //}
                /* else {
                         JOptionPane.showMessageDialog(null, "Error: A vehicle with "
@@ -77,7 +91,8 @@ public class NewVehicleUI extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -98,6 +113,8 @@ public class NewVehicleUI extends javax.swing.JPanel {
         mileageField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         dmgNotesField = new javax.swing.JTextField();
+        maintenanceLabel = new javax.swing.JLabel();
+        maintenanceField = new javax.swing.JTextField();
 
         jLabel2.setText("Make");
 
@@ -115,8 +132,10 @@ public class NewVehicleUI extends javax.swing.JPanel {
 
         jLabel9.setText("Gas");
 
-        gasField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        gasField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 gasFieldActionPerformed(evt);
             }
         });
@@ -125,11 +144,15 @@ public class NewVehicleUI extends javax.swing.JPanel {
 
         jLabel10.setText("Damage Notes:");
 
-        dmgNotesField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        dmgNotesField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 dmgNotesFieldActionPerformed(evt);
             }
         });
+
+        maintenanceLabel.setText("Next Maintenance (mmddyyyy):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,7 +177,10 @@ public class NewVehicleUI extends javax.swing.JPanel {
                             .addComponent(classField)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addComponent(maintenanceLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maintenanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -165,14 +191,14 @@ public class NewVehicleUI extends javax.swing.JPanel {
                             .addComponent(gasField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dailyPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10))
-                        .addGap(0, 213, Short.MAX_VALUE)))
+                                .addComponent(dailyPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,7 +219,9 @@ public class NewVehicleUI extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maintenanceLabel)
+                    .addComponent(maintenanceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -244,6 +272,8 @@ public class NewVehicleUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JTextField maintenanceField;
+    private javax.swing.JLabel maintenanceLabel;
     public javax.swing.JTextField makeField;
     private javax.swing.JTextField mileageField;
     public javax.swing.JTextField modelField;
