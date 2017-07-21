@@ -26,7 +26,7 @@ public class Return {
         
         int i=0;
         Scanner in = new Scanner(new File("RentalBase.txt"));
-        String areaCode, remainingPhoneNumber;
+        //String areaCode, remainingPhoneNumber;
         in.useDelimiter(" ");
         
         while(in.hasNextLine()){
@@ -43,9 +43,9 @@ public class Return {
             customer.setFirstName(in.next());
             customer.setLastName(in.next());
             customer.setAge(Integer.parseInt(in.next()));
-            areaCode = in.next();
-            remainingPhoneNumber = in.next();
-            customer.setPhoneNumber(areaCode + " " + remainingPhoneNumber);
+            //areaCode = in.next();
+            //remainingPhoneNumber = in.next();
+            customer.setPhoneNumber(in.next());
             customer.setEmailAddress(in.nextLine());
             
             Rental rentEntry = new Rental(vehicle, customer);
@@ -90,11 +90,13 @@ public class Return {
             FileWriter rentalWriter = new FileWriter("RentalBase.txt", false);
             
             for(Rental r:toReturn) {
-                rentalWriter.write(r.vehicle.getMake() + " " + 
+                rentalWriter.write(r.vehicle.getID() + " " + r.vehicle.getMake() + " " + 
                         r.vehicle.getModel() + " " + r.vehicle.getColor() + 
-                        " " + r.vehicle.getCarClass() + " " + 
+                        " " + r.vehicle.getYear() + " " + r.vehicle.getCarClass() + " " + 
+                        r.vehicle.getDailyPrice() + " " +
                         r.customer.getFirstName() + " " + 
                         r.customer.getLastName() + " " + 
+                        r.customer.getAge() + " " +
                         r.customer.getPhoneNumber() + " " + 
                         r.customer.getEmailAddress());
                 rentalWriter.write(System.getProperty("line.separator"));
