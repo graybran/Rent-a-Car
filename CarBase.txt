@@ -1,0 +1,4 @@
+0 Jeep Cherokee Black 2000 Truck true 50.0 0.5 50000 07232017 N/A 
+1 Mazda Rx7 White 2010 Car true 60.0 0.75 60000 07222017 Tons of dmg, sue em 
+2 VW Jetta Gray 2017 Sedan true 75.0 0.5 13000 07252017 N/A
+3 Lamborghini Aventador Black 2017 Car true 600.0 1 321 07192017 Dude it's just a tire. Freaking kill em 
