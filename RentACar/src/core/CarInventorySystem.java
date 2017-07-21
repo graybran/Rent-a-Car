@@ -197,6 +197,9 @@ public class CarInventorySystem
         foundVehicle.setCarClass(vehicleInformation.get(5).toString());
         foundVehicle.setAvailability(vehicleInformation.get(6).toString().equals("1"));
         foundVehicle.setDailyPrice(Double.parseDouble(vehicleInformation.get(7).toString()));
+        foundVehicle.setGas(Double.parseDouble(vehicleInformation.get(8).toString()));
+        foundVehicle.setMileage(Integer.parseInt(vehicleInformation.get(9).toString()));
+        foundVehicle.setDmgNotes(vehicleInformation.get(10).toString()); //I'm unsure if this will grab all of the dmg notes (may be first token only)
         
         return foundVehicle;
     }
@@ -286,6 +289,9 @@ public class CarInventorySystem
         sb.append(insertThisVehicle.getCarClass()).append(" ");
         sb.append(Boolean.toString(insertThisVehicle.isAvailability())).append(" ");
         sb.append(insertThisVehicle.getDailyPrice()).append(" ");
+        sb.append(insertThisVehicle.getGas()).append(" ");
+        sb.append(insertThisVehicle.getMileage()).append(" ");
+        sb.append(insertThisVehicle.getDmgNotes()).append(" ");
         
         return sb.toString();
     }
