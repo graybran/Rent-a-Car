@@ -89,6 +89,8 @@ public class RentacarUI extends javax.swing.JFrame
             }
         });
 
+        jButton1.setText("Attention!");
+
         fileMenu.setText("File");
 
         quitMenuItem.setText("Quit");
@@ -258,7 +260,11 @@ public class RentacarUI extends javax.swing.JFrame
     // Code when newRental menu is pressed
     private void newRentalMenuActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_newRentalMenuActionPerformed
     {//GEN-HEADEREND:event_newRentalMenuActionPerformed
-        new NewRentalUI();
+        try {
+            new newRentalUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_newRentalMenuActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_returnButtonActionPerformed
@@ -268,7 +274,11 @@ public class RentacarUI extends javax.swing.JFrame
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
     {//GEN-HEADEREND:event_rentButtonActionPerformed
-        new NewRentalUI();
+        try {
+            new newRentalUI();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_rentButtonActionPerformed
 
     private void addInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addInventoryMenuItemActionPerformed

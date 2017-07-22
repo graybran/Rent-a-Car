@@ -234,5 +234,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maintenanceButtonActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Attention!"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

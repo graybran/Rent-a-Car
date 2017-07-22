@@ -10,6 +10,8 @@ public class CustomerStorageSystem {
     
     private static ArrayList<Customer> customerList;
     
+    private static int curID;
+    
     public CustomerStorageSystem() throws FileNotFoundException {
         customerList = new ArrayList(1000);
         populateInitialList();
@@ -18,32 +20,25 @@ public class CustomerStorageSystem {
     
     private void populateInitialList() throws FileNotFoundException{
         
+        int i = 0;
+        Scanner in = new Scanner(new File("CustomerBase.txt"));
+        in.useDelimiter(" ");
         
-        Scanner in = new Scanner(new File("Starter DB_cust.txt"));
         while(in.hasNextLine()){
            Customer customer = new Customer();
-           customer.setCustID(Integer.parseInt(in.nextLine()));
-           customer.setLastName(in.nextLine());
-           customer.setFirstName(in.nextLine());
+           customer.setCustID(Integer.parseInt(in.next()));
+           customer.setFirstName(in.next());
+           customer.setLastName(in.next());
+           customer.setAge(Integer.parseInt(in.next()));
+           customer.setPhoneNumber(in.next());
            customer.setEmailAddress(in.nextLine());
-           customer.setPhoneNumber(in.nextLine());
-           customer.setAge(Integer.parseInt(in.nextLine()));
-           int rentalID = Integer.parseInt(in.nextLine());
-           if(rentalID == -1){
-               customer.setRentalID(rentalID);
-           }
-           else{
-               customer.setRentalID(rentalID);
-               //Vehicle car = CarInventorySystem.getCar(rentalID);
-               //Rental rental = new Rental(car, customer);
-               //RentalBase.set(rental, rentalID);
-           }
-
            customerList.add(customer.getCustID(), customer);
+           i++;
         }
-        
+
+        curID = i;
         checkDBExists();
-        System.out.println(getCustomer(1).getFirstName());
+        //System.out.println(getCustomer(1).getFirstName());
     }
     
     private void checkDBExists()
@@ -63,6 +58,7 @@ public class CustomerStorageSystem {
     
     public Customer RegisterCustomer(int id, String firstName, String lastName, 
             int age, String phoneNumber, String emailAddress) {
+        curID++;
         Customer newCustomer = new Customer();
         newCustomer.setCustID(id);
         newCustomer.setFirstName(firstName);
@@ -294,6 +290,10 @@ public class CustomerStorageSystem {
     public static Customer getCustomer(Integer id){
         return customerList.get(id);
         
+    }
+    
+    public static int getcurID(){
+        return curID;
     }
     
     public static int getSize(){
