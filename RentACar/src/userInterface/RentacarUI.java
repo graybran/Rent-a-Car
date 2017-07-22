@@ -298,7 +298,7 @@ public class RentacarUI extends javax.swing.JFrame
 
     private void addCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerMenuItemActionPerformed
         try {
-            new NewCustomerUI();
+            new newCustomerUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
         }
