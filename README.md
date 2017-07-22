@@ -28,6 +28,10 @@ As described, Rent-a-Car will provide rental car stores with rich features to al
 
 [Rent-a-Car Acceptance Test (Stories 7, 8, 9, 10, 11)](https://drive.google.com/file/d/0B_kXzrPNprTRQ1dqaS0tV1hSM1E/view?usp=sharing)
 
+[Rent-a-Car Acceptance Test (Stories 5, 6)](https://github.com/graybran/Rent-a-Car/blob/master/AcceptanceTests%20-%20Sprint3/Acceptance%20Test%205%266.pdf)
+
+[Rent-a-Car Acceptance Test (Stories 2, 16, 17, 18)](https://github.com/graybran/Rent-a-Car/blob/master/AcceptanceTests%20-%20Sprint3/User%20stories%202%2C%2016%2C%2017%2C%2018.pdf)
+
 [Rent-a-Car Manual Testing - Renting and Returning Vehicles](https://drive.google.com/file/d/0B_kXzrPNprTRYjh4X25vQWNwSWc/view?usp=sharing)
 
 
