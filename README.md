@@ -38,10 +38,6 @@ As described, Rent-a-Car will provide rental car stores with rich features to al
 
 [Rent-a-Car Manual Testing - Renting and Returning Vehicles](https://drive.google.com/file/d/0B_kXzrPNprTRYjh4X25vQWNwSWc/view?usp=sharing)
 
-[Rent-a-Car Acceptance Tests User Stories 2, 16, 17, 18](https://drive.google.com/file/d/0B_kXzrPNprTRajZ5UTdyV3lYdW8/view?usp=sharing)
-
-[Rent-a-Car Acceptance Tests User Stories 5 and 6](https://drive.google.com/file/d/0B_kXzrPNprTRVUZwZG50LWdyb3c/view?usp=sharing)
-
 [Sprint 3 Video Demonstration](https://www.youtube.com/playlist?list=PLQMKo-64JL5cKZOBv2k2WzRByZe-Auq3M)
 
 
