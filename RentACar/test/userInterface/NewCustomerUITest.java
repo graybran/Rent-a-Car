@@ -13,11 +13,11 @@ import static org.junit.Assert.*;
 
 public class NewCustomerUITest {
     
-    private newCustomerUI testNewCustomerUI;
+    private NewCustomerUI testNewCustomerUI;
     
     public NewCustomerUITest() {
         try {
-            testNewCustomerUI = new newCustomerUI();
+            testNewCustomerUI = new NewCustomerUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NewCustomerUITest.class.getName()).log(Level.SEVERE, null, ex);
         }

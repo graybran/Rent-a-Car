@@ -35,6 +35,7 @@ public class CustomerStorageSystem {
            customerList.add(customer.getCustID(), customer);
            i++;
         }
+
         curID = i;
         checkDBExists();
         //System.out.println(getCustomer(1).getFirstName());

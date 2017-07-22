@@ -302,7 +302,7 @@ public class CarInventorySystem
         WriteDBArrayToFile(carListBuffer);
     }
     
-    private String VehicleInfoToOneLineString(Vehicle insertThisVehicle, StringBuilder sb)
+    public String VehicleInfoToOneLineString(Vehicle insertThisVehicle, StringBuilder sb)
     {
         sb.append(" ").append(insertThisVehicle.getMake()).append(" ");
         sb.append(insertThisVehicle.getModel()).append(" ");
@@ -348,6 +348,85 @@ public class CarInventorySystem
         return maintenance;
     }
     
+    // Returns an arraylist of the whole DB that's in file
+    public ArrayList<Vehicle> dbToArrayList()
+    {
+        ArrayList<Vehicle> vehicleList = new ArrayList<>();
+        String [] carListBuffer = new String[1000];
+        Scanner in = null;
+        
+        // Reads CarBase.txt
+        try
+        {
+            in = new Scanner(new File("CarBase.txt"));
+        }
+        catch(FileNotFoundException e)
+        {
+        }
+        
+        int id = in.nextInt();
+        String N = in.nextLine();
+        
+        // Store contents in an array
+        while (in.hasNextLine())
+        {
+            carListBuffer[id] = N;
+            id = in.nextInt();
+            N = in.nextLine();
+        }
+        carListBuffer[id] = N;
+        
+        // Add each vehicle to array list
+        for (int i = 0; i < carListBuffer.length; i++)
+            if(carListBuffer[i] != null)
+                vehicleList.add(stringToVehicle(i, carListBuffer[i]));
+        
+        return vehicleList;
+    }
+    
+    // stringToVehicle
+    private Vehicle stringToVehicle(int id, String vehicleString)
+    {
+        SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+        Date date = null;
+        Vehicle retVal = new Vehicle();
+        String [] result = vehicleString.split("\\s");
+        
+        retVal.setID(id);
+        
+        retVal.setMake(result[1]);
+        retVal.setModel(result[2]);
+        retVal.setColor(result[3]);
+        retVal.setYear(Integer.parseInt(result[4]));
+        retVal.setCarClass(result[5]);
+        retVal.setAvailability(result[6].equals("1"));
+        retVal.setDailyPrice(Double.parseDouble(result[7]));
+        retVal.setGas(Double.parseDouble(result[8]));
+        retVal.setMileage(Integer.parseInt(result[9]));
+        
+        // Formats string to date object for maintenance date
+        try
+        {
+            date = format.parse(result[10]);
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        
+        retVal.setNextMaintenance(date);
+        
+        // For damage notes
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 11; i < result.length; i++)
+            sb.append(result[i]).append(" ");
+            
+        retVal.setDmgNotes(sb.toString());
+        
+        return retVal;
+    }
+
     public static Vehicle getCar(int id)
     {
         Vehicle retVal;

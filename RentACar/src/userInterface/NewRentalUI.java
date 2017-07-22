@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import rentacar.*;
 
-public class newRentalUI extends javax.swing.JPanel
+public class NewRentalUI extends javax.swing.JPanel
 {
     
     private String foundVehicleInformation;
@@ -20,7 +20,7 @@ public class newRentalUI extends javax.swing.JPanel
     /**
      * Creates new form NewJPanel
      */
-    public newRentalUI() throws FileNotFoundException
+    public NewRentalUI()
     {
         initComponents();
         
@@ -56,12 +56,6 @@ public class newRentalUI extends javax.swing.JPanel
                 rentCustomer.setPhoneNumber(phoneField.getText());
                 
                 CarInventorySystem inventory = new CarInventorySystem();
-
-                CustomerStorageSystem storage = new CustomerStorageSystem();
-                
-                storage.RegisterCustomer(rentCustomer.getCustID(), rentCustomer.getFirstName(), rentCustomer.getLastName(),
-                            rentCustomer.getAge(), rentCustomer.getPhoneNumber(), rentCustomer.getEmailAddress());
-
                 
                 Vehicle rentVehicle = SearchInventoryUI.ReturnFoundVehicle();
                 
@@ -112,7 +106,8 @@ public class newRentalUI extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         lastNameLabel = new javax.swing.JLabel();
         phoneLabel = new javax.swing.JLabel();
@@ -138,29 +133,37 @@ public class newRentalUI extends javax.swing.JPanel
 
         emailLabel.setText("Email Address");
 
-        lastNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        lastNameField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 lastNameFieldActionPerformed(evt);
             }
         });
 
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        firstNameField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 firstNameFieldActionPerformed(evt);
             }
         });
 
         carField.setEditable(false);
         carField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        carField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        carField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 carFieldActionPerformed(evt);
             }
         });
 
         searchCarButton.setText("Search...");
-        searchCarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        searchCarButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 searchCarButtonActionPerformed(evt);
             }
         });
