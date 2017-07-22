@@ -31,7 +31,7 @@ public class CustomerStorageSystem {
            customer.setLastName(in.next());
            customer.setAge(Integer.parseInt(in.next()));
            customer.setPhoneNumber(in.next());
-           customer.setEmailAddress(in.next());
+           customer.setEmailAddress(in.nextLine());
            customerList.add(customer.getCustID(), customer);
            i++;
         }
