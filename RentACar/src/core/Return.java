@@ -27,7 +27,7 @@ public class Return {
         int i=0;
         Scanner in = new Scanner(new File("RentalBase.txt"));
         //String areaCode, remainingPhoneNumber;
-        in.useDelimiter(" ");
+        //in.useDelimiter(" ");
         
         while(in.hasNextLine()){
             Vehicle vehicle = new Vehicle();

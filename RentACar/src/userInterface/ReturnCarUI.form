@@ -33,7 +33,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,18 +119,28 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="MileageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="DamageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="GasLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="damageField" pref="247" max="32767" attributes="0"/>
-                      <Component id="mileageField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="gasField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="MileageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="DamageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="GasLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="damageField" pref="247" max="32767" attributes="0"/>
+                              <Component id="mileageField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="gasField" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="maintenanceLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="maintenanceField" min="-2" pref="94" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -154,7 +164,12 @@
                       <Component id="GasLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="gasField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="maintenanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="maintenanceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,6 +198,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="gasField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="maintenanceLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Next Maintenance (mmddyyyy):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="maintenanceField">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

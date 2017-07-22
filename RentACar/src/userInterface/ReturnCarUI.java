@@ -4,6 +4,9 @@ import core.CarInventorySystem;
 import core.Rental;
 import core.Return;
 import core.Vehicle;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class ReturnCarUI extends javax.swing.JPanel {
@@ -23,6 +26,18 @@ public class ReturnCarUI extends javax.swing.JPanel {
             String damage = damageField.getText();
             int mileage = Integer.parseInt(mileageField.getText());
             Double gasLevel = Double.parseDouble(gasField.getText());
+            
+            // For Maintenance
+            SimpleDateFormat format = new SimpleDateFormat("MMddyyyy");
+            Date date = null;
+            try 
+            {
+                date = format.parse(maintenanceField.getText());
+            } 
+            catch (ParseException e) 
+            {
+                e.printStackTrace();
+            }
             
             Return newReturn = new Return();
             Rental foundRental = newReturn.SearchRental(firstName, lastName);
@@ -45,6 +60,7 @@ public class ReturnCarUI extends javax.swing.JPanel {
                 rentedVehicle.setGas(gasLevel);
                 rentedVehicle.setDmgNotes(damage);
                 rentedVehicle.setMileage(mileage);
+                rentedVehicle.setNextMaintenance(date);
                 inventory.StoreVehicle(rentedVehicle, true);
                 
                 JOptionPane.showMessageDialog(null, "The return was "
@@ -80,7 +96,8 @@ public class ReturnCarUI extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         firstNameLabel = new javax.swing.JLabel();
@@ -94,21 +111,27 @@ public class ReturnCarUI extends javax.swing.JPanel {
         mileageField = new javax.swing.JTextField();
         GasLabel = new javax.swing.JLabel();
         gasField = new javax.swing.JTextField();
+        maintenanceLabel = new javax.swing.JLabel();
+        maintenanceField = new javax.swing.JTextField();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Search"));
 
         firstNameLabel.setText("First Name");
 
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        firstNameField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 firstNameFieldActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Last Name");
 
-        lastNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        lastNameField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 lastNameFieldActionPerformed(evt);
             }
         });
@@ -146,8 +169,10 @@ public class ReturnCarUI extends javax.swing.JPanel {
 
         DamageLabel.setText("Damage");
 
-        damageField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        damageField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 damageFieldActionPerformed(evt);
             }
         });
@@ -156,6 +181,8 @@ public class ReturnCarUI extends javax.swing.JPanel {
 
         GasLabel.setText("Gas Level");
 
+        maintenanceLabel.setText("Next Maintenance (mmddyyyy):");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,14 +190,21 @@ public class ReturnCarUI extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MileageLabel)
-                    .addComponent(DamageLabel)
-                    .addComponent(GasLabel))
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(damageField, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(mileageField)
-                    .addComponent(gasField))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MileageLabel)
+                            .addComponent(DamageLabel)
+                            .addComponent(GasLabel))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(damageField, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(mileageField)
+                            .addComponent(gasField)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(maintenanceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(maintenanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -188,7 +222,11 @@ public class ReturnCarUI extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GasLabel)
                     .addComponent(gasField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maintenanceLabel)
+                    .addComponent(maintenanceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -209,7 +247,7 @@ public class ReturnCarUI extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,6 +276,8 @@ public class ReturnCarUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField lastNameField;
+    public javax.swing.JTextField maintenanceField;
+    private javax.swing.JLabel maintenanceLabel;
     private javax.swing.JTextField mileageField;
     // End of variables declaration//GEN-END:variables
 }
