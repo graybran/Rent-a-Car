@@ -6,9 +6,6 @@ import javax.swing.JOptionPane;
 
 public class UpdateCustomerUI extends javax.swing.JPanel {
 
-    /**
-     * Creates new form UpdateCustomerUI
-     */
     public UpdateCustomerUI() throws FileNotFoundException {
         initComponents();
         
@@ -40,7 +37,6 @@ public class UpdateCustomerUI extends javax.swing.JPanel {
                     // Updates the database, overwriting old one
                     try
                     {
-    //                        searchInventory.UpdateDatabase(updateThisVehicle, toUpdate);
                         customerSystem.UpdateDatabase(updateThisCustomer);
                     }
                     catch(Exception e)

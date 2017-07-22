@@ -9,9 +9,6 @@ public class SearchInventoryUI extends javax.swing.JPanel {
 
     private static Vehicle foundVehicle;
     
-    /**
-     * Creates new form SearchInventoryUI
-     */
     public SearchInventoryUI() {
         initComponents();
         searchResultArea.setEditable(false);
@@ -19,13 +16,6 @@ public class SearchInventoryUI extends javax.swing.JPanel {
         
         // Adds an "OK" dialog
         Object[] options = {"OK"};
-//        int result = JOptionPane.showOptionDialog(null,
-//                   this,"Title",
-//                   JOptionPane.PLAIN_MESSAGE,
-//                   JOptionPane.QUESTION_MESSAGE,
-//                   null,
-//                   options,
-//                   options[0]);
         int result = JOptionPane.showOptionDialog(null, this, 
                 "Search Inventory", JOptionPane.PLAIN_MESSAGE, 
                 JOptionPane.INFORMATION_MESSAGE, null, options, 
@@ -42,44 +32,7 @@ public class SearchInventoryUI extends javax.swing.JPanel {
                             + "performed. Please try again.", "Information", 
                             JOptionPane.INFORMATION_MESSAGE);
                 }
-                
-                //int searchID = Integer.parseInt(searchIDField.getText());
-                
-//                    CarInventorySystem inventory = new CarInventorySystem();
-//                    Vehicle foundVehicle = inventory.SearchVehicle(searchID);
-//                
-//                    if(foundVehicle != null) {
-//                        JOptionPane.showMessageDialog(null, "Found vehicle: " + 
-//                                foundVehicle.getYear() + " " + foundVehicle.getMake() + 
-//                                " " + foundVehicle.getModel() + " " + 
-//                                foundVehicle.getColor() + " " + 
-//                                foundVehicle.getCarClass() + " for a daily price of $" + 
-//                                foundVehicle.getDailyPrice(), "Vehicle Found", 
-//                                JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                    else {
-//                        JOptionPane.showMessageDialog(null, 
-//                                "Error: The requested vehicle was not found. "
-//                                        + "Please try again.", "Error", 
-//                                        JOptionPane.ERROR_MESSAGE);
-//                    }
             }
-//            else {
-//                JOptionPane.showMessageDialog(null, "The ID field is blank. "
-//                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-//            }
-            
-            
-//            Customer addedCustomer = new Customer();
-//            addedCustomer.setFirstName(first);
-//            addedCustomer.setLastName(last);
-//            addedCustomer.setAge(age);
-//            addedCustomer.setPhoneNumber(phone);
-//            addedCustomer.setEmailAddress(email);
-//            addedCustomer.StoreCustomer();
-            
-//            CustomerStorageSystem customerSystem = new CustomerStorageSystem();
-//            customerSystem.RegisterCustomer(first, last, age, phone, email);
         } 
         else 
         {
@@ -268,9 +221,6 @@ public class SearchInventoryUI extends javax.swing.JPanel {
                 {
                     System.out.println(arrayElement.getMake());
                     if(arrayElement.getMake().equals(make)){
-                        /*jTextArea1.setText(arrayElement.getID() + ": " + arrayElement.getColor() + " "  + arrayElement.getYear()
-                                            + " " + arrayElement.getMake() + " " + arrayElement.getModel());
-                        */
                         searchResults.add(arrayElement);
                         flag = true;
                     }

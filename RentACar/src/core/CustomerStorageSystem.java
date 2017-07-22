@@ -277,12 +277,12 @@ public class CustomerStorageSystem {
     public Customer InitializeCustomerInformation(ArrayList customerInformation) {
         Customer foundCustomer = new Customer();
         
+        foundCustomer.setCustID(Integer.parseInt(customerInformation.get(0).toString()));
         foundCustomer.setFirstName(customerInformation.get(1).toString());
         foundCustomer.setLastName(customerInformation.get(2).toString());
         foundCustomer.setAge(Integer.parseInt(customerInformation.get(3).toString()));
-        foundCustomer.setPhoneNumber(customerInformation.get(4).toString() + " " 
-                                    + customerInformation.get(5).toString());
-        foundCustomer.setEmailAddress(customerInformation.get(6).toString());
+        foundCustomer.setPhoneNumber(customerInformation.get(4).toString());
+        foundCustomer.setEmailAddress(customerInformation.get(5).toString());
         
         return foundCustomer;
     }

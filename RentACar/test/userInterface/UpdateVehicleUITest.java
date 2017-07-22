@@ -17,7 +17,8 @@ public class UpdateVehicleUITest
  
     public UpdateVehicleUITest()
     {
-        try {
+        try 
+        {
             testUpdateVehicleUI = new UpdateVehicleUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(UpdateVehicleUITest.class.getName()).log(Level.SEVERE, null, ex);

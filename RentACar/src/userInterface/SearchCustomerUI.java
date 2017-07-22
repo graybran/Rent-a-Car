@@ -10,9 +10,6 @@ public class SearchCustomerUI extends javax.swing.JPanel implements java.beans.C
     
     private Object bean;
 
-    /**
-     * Creates new customizer SearchCustomer
-     */
     public SearchCustomerUI() {
         initComponents();
         
@@ -160,19 +157,7 @@ public class SearchCustomerUI extends javax.swing.JPanel implements java.beans.C
                     jTextArea1.append("Model: " + rental.getModel() + "\n");
                     jTextArea1.append("Year: " + rental.getYear() + "\n");
                     jTextArea1.append("Color: " + rental.getColor() + "\n");
-                }/*
-                if(customer.getRentalID() == -1){
-                    jTextArea1.setText(customer.getFirstName() + " " + customer.getLastName() + " " + 
-                            customer.getEmailAddress() + " " + customer.getPhoneNumber());
                 }
-                else{
-                    Vehicle rental = CarInventorySystem.getCar(customer.getRentalID());
-                    jTextArea1.setText(customer.getFirstName() + " " + customer.getLastName() + " " + 
-                            customer.getEmailAddress() + " " + customer.getPhoneNumber() + "\n" +
-                           rental.getID() + ": " + rental.getColor() + " " + rental.getYear() + " " + 
-                            rental.getMake() + " "  + rental.getModel());
-                }
-*/
             }
         }
         

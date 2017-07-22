@@ -30,23 +30,7 @@ public class newRentalUI extends javax.swing.JPanel
         
         // Logic for OKAY or CANCEL button press
         if (result == JOptionPane.OK_OPTION) 
-        {
-            //Stores customer information from text fields
-            //Search functionality isn't setup so I hardcoded a car choice there
-//            Customer cTemp = new Customer();
-//            cTemp.setAge(Integer.parseInt(ageField.getText()));
-//            cTemp.setEmailAddress(emailField.getText());
-//            cTemp.setFirstName(firstNameField.getText());
-//            cTemp.setLastName(lastNameField.getText());
-            //String car = carField.getText();
-            //Integer ID = Integer.parseInt(car);
-            
-				// Calculate rental duration
-				//int rentalDays = calculateRentalDuration();
-				
-				// Cost of rental
-				//double cost = calculateRentalCost(rentalDays, rtemp2.vehicle.getDailyPrice());
-            
+        {            
             if(ValidateInput()) {
                 Customer rentCustomer = new Customer();
                 rentCustomer.setAge(Integer.parseInt(ageField.getText()));
@@ -69,6 +53,7 @@ public class newRentalUI extends javax.swing.JPanel
                     Rental newRental = new Rental(rentVehicle, rentCustomer);
                     newRental.AddRental();
                     rentVehicle.setAvailability(false);
+                    rentVehicle.setNextMaintenance(new Date());
                     newRental.PrintRentals();
                     inventory.StoreVehicle(rentVehicle, true);
                     

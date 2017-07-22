@@ -1,1 +1,3 @@
-0 VW Jetta Black 2017 Sedan true 50.0 0.5 22000 01012017 N/A
+0 Toyota Camry Blue 2010 Sedan false 1000.0 1.0 20000 07212017  Got Rekt 
+1 Lamborghini Aventador Yellow 2017 Car true 500.0 0.0 99999 07232017 Blew off car 
+2 Jaguar CX75Prototype Blue 2018 Car false 800.0 0.5 986 080122017 Car exploded 
