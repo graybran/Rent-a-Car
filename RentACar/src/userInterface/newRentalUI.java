@@ -1,25 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package userInterface;
 
 import javax.swing.JOptionPane;
 import core.*;
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import rentacar.*;
 
-/**
- *
- * @author Jose Antonio
- */
 public class newRentalUI extends javax.swing.JPanel
 {
+    
+    private String foundVehicleInformation;
 
     /**
      * Creates new form NewJPanel
      */
-    public newRentalUI()
+    public newRentalUI() throws FileNotFoundException
     {
         initComponents();
         
@@ -32,38 +33,76 @@ public class newRentalUI extends javax.swing.JPanel
         {
             //Stores customer information from text fields
             //Search functionality isn't setup so I hardcoded a car choice there
-            Customer cTemp = new Customer();
-            cTemp.setAge(Integer.parseInt(ageField.getText()));
-            cTemp.setEmailAddress(emailField.getText());
-            cTemp.setFirstName(firstNameField.getText());
-            cTemp.setLastName(lastNameField.getText());
+//            Customer cTemp = new Customer();
+//            cTemp.setAge(Integer.parseInt(ageField.getText()));
+//            cTemp.setEmailAddress(emailField.getText());
+//            cTemp.setFirstName(firstNameField.getText());
+//            cTemp.setLastName(lastNameField.getText());
             //String car = carField.getText();
             //Integer ID = Integer.parseInt(car);
             
-            Rental rTemp = Rentacar.DBgetter(1);
-            rTemp.customer = cTemp;
-            Rentacar.DBupdater(rTemp, 1);
+				// Calculate rental duration
+				//int rentalDays = calculateRentalDuration();
+				
+				// Cost of rental
+				//double cost = calculateRentalCost(rentalDays, rtemp2.vehicle.getDailyPrice());
             
-            //Tests whether information was actually stored
-            //Prints to debug window (No where in GUI)
-            Rental rtemp2 = Rentacar.DBgetter(1);
-            System.out.println("Customer Information");
-            System.out.println("First: " + rtemp2.customer.getFirstName());
-            System.out.println("Last: " + rtemp2.customer.getLastName());
-            System.out.println("Age: " + rtemp2.customer.getAge());
-            System.out.println("Email: " + rtemp2.customer.getEmailAddress());
-            System.out.println();
-            System.out.println("Car Information");
-            System.out.println("ID: " + rtemp2.vehicle.getID());
-            System.out.println("Make: " + rtemp2.vehicle.getMake());
-            System.out.println("Model: " + rtemp2.vehicle.getModel());
-            System.out.println("Year: " + rtemp2.vehicle.getYear());
-            
+            if(ValidateInput()) {
+                Customer rentCustomer = new Customer();
+                rentCustomer.setAge(Integer.parseInt(ageField.getText()));
+                rentCustomer.setEmailAddress(emailField.getText());
+                rentCustomer.setFirstName(firstNameField.getText());
+                rentCustomer.setLastName(lastNameField.getText());
+                rentCustomer.setPhoneNumber(phoneField.getText());
+                
+                CarInventorySystem inventory = new CarInventorySystem();
+
+                CustomerStorageSystem storage = new CustomerStorageSystem();
+                
+                storage.RegisterCustomer(rentCustomer.getCustID(), rentCustomer.getFirstName(), rentCustomer.getLastName(),
+                            rentCustomer.getAge(), rentCustomer.getPhoneNumber(), rentCustomer.getEmailAddress());
+
+                
+                Vehicle rentVehicle = SearchInventoryUI.ReturnFoundVehicle();
+                
+                if(rentCustomer.getAge() >= 18 && rentVehicle.isAvailability() == true) {
+                    Rental newRental = new Rental(rentVehicle, rentCustomer);
+                    newRental.AddRental();
+                    rentVehicle.setAvailability(false);
+                    newRental.PrintRentals();
+                    inventory.StoreVehicle(rentVehicle, true);
+                    
+                    JOptionPane.showMessageDialog(null, "The rental was "
+                            + "successful.", "Confirmation",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(rentVehicle.isAvailability() == false) {
+                    JOptionPane.showMessageDialog(null, "That vehicle is currently "
+                            + "rented. Please try again.", "Information", 
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(rentCustomer.getAge() < 18) {
+                    JOptionPane.showMessageDialog(null, "The customer must be at "
+                            + "least 18 years old to rent a car. Please try again.", 
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else {
+                if(carField.getText().equals("Please choose a vehicle")) {
+                    JOptionPane.showMessageDialog(null, "A vehicle to rent must be "
+                            + "chosen to complete the rental. Please choose "
+                            + "a vehicle.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Some fields are left blank. "
+                        + "Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
         else 
         {
             System.out.println("Cancelled");
-        }
+        }        
     }
 
     /**
@@ -134,9 +173,9 @@ public class newRentalUI extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
@@ -155,7 +194,7 @@ public class newRentalUI extends javax.swing.JPanel
                     .addComponent(emailField)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 313, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,7 +225,7 @@ public class newRentalUI extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,7 +242,9 @@ public class newRentalUI extends javax.swing.JPanel
     }//GEN-LAST:event_carFieldActionPerformed
 
     private void searchCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCarButtonActionPerformed
-        // TODO add your handling code here:
+        new SearchInventoryUI();
+        foundVehicleInformation = SearchInventoryUI.ReturnFoundVehicleInformation();
+        SetProperText();
     }//GEN-LAST:event_searchCarButtonActionPerformed
 
 
@@ -222,4 +263,44 @@ public class newRentalUI extends javax.swing.JPanel
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JButton searchCarButton;
     // End of variables declaration//GEN-END:variables
+/*
+	private int calculateRentalDuration() 
+	{
+		Date start = startDateField.getDate();
+		Date end = endDateField.getDate();
+		long diff = end.getTime() - start.getTime();
+		
+		return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+	}
+	
+	private double calculateRentalCost(int rentalDuration, double price)
+	{
+		return rentalDuration * price;
+	}
+*/
+    
+    private void SetProperText() {
+        if(foundVehicleInformation != null) {
+            if(carField.getText().isEmpty()) {
+                carField.setText(foundVehicleInformation);
+            }
+            else {
+                carField.setText("");
+                carField.setText(foundVehicleInformation);
+            }
+        }
+        else {
+            carField.setText("");
+            carField.setText("Please choose a vehicle");
+        }
+    }
+
+    private boolean ValidateInput() {
+        if(firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || 
+                ageField.getText().isEmpty() || phoneField.getText().isEmpty() || 
+                emailField.getText().isEmpty() || carField.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }

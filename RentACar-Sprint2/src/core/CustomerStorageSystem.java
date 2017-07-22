@@ -10,11 +10,9 @@ import java.util.logging.Logger;
 
 public class CustomerStorageSystem {
     
-    private CustomerStorage storageSystem;
     private static ArrayList<Customer> customerList;
     
-    public CustomerStorageSystem(CustomerStorage store) throws FileNotFoundException {
-        this.storageSystem = store;
+    public CustomerStorageSystem() throws FileNotFoundException {
         customerList = new ArrayList(1000);
         populateInitialList();
     }
@@ -27,13 +25,6 @@ public class CustomerStorageSystem {
         while(in.hasNextLine()){
            Customer customer = new Customer();
            customer.setCustID(Integer.parseInt(in.nextLine()));
-          /* System.out.println(in.nextLine());
-           System.out.println(in.nextLine());
-           System.out.println(in.nextLine());
-           System.out.println(in.nextLine());
-           System.out.println(in.nextLine());
-           System.out.println(in.nextLine());
-           System.out.println(in.nextLine());*/
            customer.setLastName(in.nextLine());
            customer.setFirstName(in.nextLine());
            customer.setEmailAddress(in.nextLine());
@@ -66,7 +57,7 @@ public class CustomerStorageSystem {
         newCustomer.setEmailAddress(emailAddress);
         
         customerList.add(newCustomer);
-        //StoreCustomer(newCustomer);
+        StoreCustomer(newCustomer);
 
         return newCustomer;
     }
@@ -88,8 +79,6 @@ public class CustomerStorageSystem {
     
     public void StoreCustomer(Customer customer) {
         
-//        ArrayList<Customer> currentCustomers = ScanCurrentBase();
-
         try {
             FileWriter custEntry = new FileWriter("CustomerBase.txt", true);
             custEntry.write(customer.getCustID() + " " + 
@@ -97,22 +86,11 @@ public class CustomerStorageSystem {
                     " " + customer.getAge() + " " + customer.getPhoneNumber() + 
                     " " + customer.getEmailAddress());
             custEntry.write(System.getProperty("line.separator"));
-            storageSystem.ReadCustomerEntry("CustomerBase.txt");
             custEntry.close();
         }
         catch(Exception ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        /* //Replaces entries
-        try (PrintWriter custBaseEntry = new PrintWriter("CustomerBase.txt", "UTF-8")) {
-            custBaseEntry.println(firstName + "\t " + lastName + "\t " + age + 
-                    "\t " + phoneNumber + "\t " + emailAddress);
-            custBaseEntry.close();
-        } catch (FileNotFoundException | UnsupportedEncodingException ex) {
-            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
     }
     
     public static Customer getCustomer(Integer id){
