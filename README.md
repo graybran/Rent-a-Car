@@ -42,6 +42,8 @@ As described, Rent-a-Car will provide rental car stores with rich features to al
 
 [Rent-a-Car Acceptance Tests User Stories 5 and 6](https://drive.google.com/file/d/0B_kXzrPNprTRVUZwZG50LWdyb3c/view?usp=sharing)
 
+[Sprint 3 Video Demonstration](https://www.youtube.com/playlist?list=PLQMKo-64JL5cKZOBv2k2WzRByZe-Auq3M)
+
 
 **Links to previous sprints**
 
