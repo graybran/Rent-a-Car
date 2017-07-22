@@ -15,6 +15,8 @@ public class RentacarUI extends javax.swing.JFrame
     public RentacarUI()
     {
         initComponents();
+        
+        // Scan whole DB every day for possible vehicles that need maintenance
     }
 
     /**
@@ -31,7 +33,7 @@ public class RentacarUI extends javax.swing.JFrame
         welcomeLabel = new javax.swing.JLabel();
         returnButton = new javax.swing.JButton();
         rentButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        maintenanceButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         quitMenuItem = new javax.swing.JMenuItem();
@@ -78,7 +80,14 @@ public class RentacarUI extends javax.swing.JFrame
             }
         });
 
-        jButton1.setText("Attention!");
+        maintenanceButton.setText("Maintenance");
+        maintenanceButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                maintenanceButtonActionPerformed(evt);
+            }
+        });
 
         fileMenu.setText("File");
 
@@ -226,14 +235,14 @@ public class RentacarUI extends javax.swing.JFrame
                 .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(maintenanceButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton1)
+                .addComponent(maintenanceButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
@@ -249,7 +258,7 @@ public class RentacarUI extends javax.swing.JFrame
     // Code when newRental menu is pressed
     private void newRentalMenuActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_newRentalMenuActionPerformed
     {//GEN-HEADEREND:event_newRentalMenuActionPerformed
-        new newRentalUI();
+        new NewRentalUI();
     }//GEN-LAST:event_newRentalMenuActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_returnButtonActionPerformed
@@ -259,7 +268,7 @@ public class RentacarUI extends javax.swing.JFrame
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_rentButtonActionPerformed
     {//GEN-HEADEREND:event_rentButtonActionPerformed
-        new newRentalUI();
+        new NewRentalUI();
     }//GEN-LAST:event_rentButtonActionPerformed
 
     private void addInventoryMenuItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addInventoryMenuItemActionPerformed
@@ -281,7 +290,7 @@ public class RentacarUI extends javax.swing.JFrame
 
     private void addCustomerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerMenuItemActionPerformed
         try {
-            new newCustomerUI();
+            new NewCustomerUI();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RentacarUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -320,14 +329,19 @@ public class RentacarUI extends javax.swing.JFrame
         new ViewRentalsUI();
     }//GEN-LAST:event_viewRentalMenuActionPerformed
 
+    private void maintenanceButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_maintenanceButtonActionPerformed
+    {//GEN-HEADEREND:event_maintenanceButtonActionPerformed
+        new MaintenanceReminderUI();
+    }//GEN-LAST:event_maintenanceButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addCustomerMenuItem;
     private javax.swing.JMenuItem addInventoryMenuItem;
     private javax.swing.JMenu customerDataMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventoryMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JButton maintenanceButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newRentalMenu;
     private javax.swing.JMenuItem newReturnRentalMenu;

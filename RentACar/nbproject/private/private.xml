@@ -3,22 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/InventorySystem.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/Rental.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/CustomerStorage.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/Vehicle.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/MaintenanceReminderUI.java</file>
             <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/userInterface/SearchInventoryUITest.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/newRentalUI.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/core/CustomerStorageSystemTest.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/UpdateVehicleUI.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/UpdateCustomerUI.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/NewVehicleUI.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/newEmployeeUI.java</file>
             <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/CarInventorySystem.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/addInventoryUI.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/userInterface/UserInterfaceTestSuite.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/userInterface/NewCustomerUITest.java</file>
             <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/userInterface/UpdateVehicleUITest.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/core/CustomerStorageSystem.java</file>
-            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/newCustomerUI.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/test/userInterface/ReturnCarUITest.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/UpdateVehicleUI.java</file>
+            <file>file:/C:/Users/Jose%20Antonio/Documents/NetBeansProjects/RentACar3/src/userInterface/NewRentalUI.java</file>
         </group>
     </open-files>
 </project-private>
