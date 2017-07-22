@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JTextField" name="startMonthField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startMonthFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="startDayField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -18,7 +32,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="endDate" max="32767" attributes="0"/>
+                  <Component id="startDate" max="32767" attributes="0"/>
                   <Component id="ageLabel" alignment="1" max="32767" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -35,15 +51,39 @@
                   <Component id="lastNameField" max="32767" attributes="0"/>
                   <Component id="firstNameField" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="carField" pref="246" max="32767" attributes="0"/>
+                      <Component id="carField" pref="258" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchCarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="phoneField" max="32767" attributes="0"/>
                   <Component id="emailField" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="ageField" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="313" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="startMonthField1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ageField" alignment="0" pref="37" max="32767" attributes="0"/>
+                          <Component id="endMonthField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel3" max="32767" attributes="0"/>
+                          <Component id="jLabel6" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="startDayField1" pref="37" max="32767" attributes="0"/>
+                          <Component id="endDayField" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel5" max="32767" attributes="0"/>
+                          <Component id="jLabel7" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="startYearField" pref="47" max="32767" attributes="0"/>
+                          <Component id="endYearField" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -53,7 +93,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lastNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lastNameField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -84,7 +124,24 @@
                   <Component id="ageLabel" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="ageField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="startDate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="startMonthField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="startDayField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="startYearField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="endDate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="endMonthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="endDayField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="endYearField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,7 +154,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="phoneLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Phone Number"/>
+        <Property name="text" type="java.lang.String" value="Phone #"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="firstNameLabel">
@@ -154,6 +211,51 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ageField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="startDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="endDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="End Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="startMonthField1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startMonthField1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="startDayField1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="startYearField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="endMonthField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="endDayField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="endYearField">
     </Component>
   </SubComponents>
 </Form>
