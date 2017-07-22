@@ -89,8 +89,6 @@ public class RentacarUI extends javax.swing.JFrame
             }
         });
 
-        jButton1.setText("Attention!");
-
         fileMenu.setText("File");
 
         quitMenuItem.setText("Quit");
