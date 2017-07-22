@@ -25,7 +25,7 @@ public class newCustomerUI extends javax.swing.JPanel
             // When OK is pressed, input logic here to store data to database
             // BUG: All input fields must be entered or application will crash
             // TODO: Check user input. Before closing. Must be implemented with a custom dialog
-            int id = Integer.parseInt(idNumberField.getText());
+            int id = CustomerStorageSystem.getcurID();
             String first = firstNameField.getText();
             String last = lastNameField.getText();
             int age = Integer.parseInt(ageField.getText());
@@ -64,8 +64,6 @@ public class newCustomerUI extends javax.swing.JPanel
         emailField = new javax.swing.JTextField();
         ageLabel = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        idNumberField = new javax.swing.JTextField();
 
         lastNameLabel.setText("Last Name");
 
@@ -76,14 +74,6 @@ public class newCustomerUI extends javax.swing.JPanel
         emailLabel.setText("Email Address");
 
         ageLabel.setText("Age");
-
-        jLabel1.setText("ID Number");
-
-        idNumberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idNumberFieldActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,23 +91,19 @@ public class newCustomerUI extends javax.swing.JPanel
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailField))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(8, 8, 8)))
-                            .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(ageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(8, 8, 8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lastNameField)
                             .addComponent(firstNameField)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ageField, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                                    .addComponent(idNumberField))
+                                .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -144,17 +130,9 @@ public class newCustomerUI extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(idNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idNumberFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idNumberFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -164,8 +142,6 @@ public class newCustomerUI extends javax.swing.JPanel
     private javax.swing.JLabel emailLabel;
     public javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
-    public javax.swing.JTextField idNumberField;
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JTextField lastNameField;
     private javax.swing.JLabel lastNameLabel;
     public javax.swing.JTextField phoneField;

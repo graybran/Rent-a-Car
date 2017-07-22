@@ -20,7 +20,7 @@ public class newRentalUI extends javax.swing.JPanel
     /**
      * Creates new form NewJPanel
      */
-    public newRentalUI()
+    public newRentalUI() throws FileNotFoundException
     {
         initComponents();
         
@@ -56,6 +56,11 @@ public class newRentalUI extends javax.swing.JPanel
                 rentCustomer.setPhoneNumber(phoneField.getText());
                 
                 CarInventorySystem inventory = new CarInventorySystem();
+                CustomerStorageSystem storage = new CustomerStorageSystem();
+                
+                storage.RegisterCustomer(rentCustomer.getCustID(), rentCustomer.getFirstName(), rentCustomer.getLastName(),
+                            rentCustomer.getAge(), rentCustomer.getPhoneNumber(), rentCustomer.getEmailAddress());
+                
                 
                 Vehicle rentVehicle = SearchInventoryUI.ReturnFoundVehicle();
                 
