@@ -24,6 +24,8 @@ As described, Rent-a-Car will provide rental car stores with rich features to al
 
 [Rent-a-Car Use Case Diagram](https://drive.google.com/file/d/0B_kXzrPNprTRVC1CWTJyZXNnRTQ/view?usp=sharing)
 
+[Rent-a-Car Class Diagram](https://drive.google.com/file/d/0B_kXzrPNprTRbGltY1p4SWg1NUU/view?usp=sharing)
+
 [Rent-a-Car State Diagram](https://drive.google.com/file/d/0B_kXzrPNprTRa2w3emF3MExMNDQ/view?usp=sharing)
 
 [Rent-a-Car Acceptance Test (Stories 7, 8, 9, 10, 11)](https://drive.google.com/file/d/0B_kXzrPNprTRQ1dqaS0tV1hSM1E/view?usp=sharing)
