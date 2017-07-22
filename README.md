@@ -8,6 +8,8 @@ As described, Rent-a-Car will provide rental car stores with rich features to al
 
 **Sprint 3 Documentation**
 
+[Rent-a-Car Product Backlog](https://docs.google.com/document/d/19tVz8rF9VnRhFXt0PjBOHA59CqIGkvKZ0KhpKD7oYjo/edit?usp=sharing)
+
 [Rent-a-Car Activity Diagram](https://drive.google.com/file/d/0B_kXzrPNprTRQlZiSVBHcjBiZ3M/view?usp=sharing)
 
 [Rent-a-Car Sequence Diagram](https://drive.google.com/file/d/0B_kXzrPNprTRalBkbkFFMzU0Rlk/view?usp=sharing)
