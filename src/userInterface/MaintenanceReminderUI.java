@@ -85,25 +85,28 @@ public class MaintenanceReminderUI extends javax.swing.JPanel
             Date date = new Date();
             if(vehicleToWrite.getNextMaintenance().before(date))
             {
-                maintenanceLateTextArea.append("Date due: "
-                                        + dateToString(vehicleToWrite) + "\nID #" 
-                                        + vehicleToWrite.getID() + ": "
-                                        + vehicleToWrite.getYear() + " " 
-                                        + vehicleToWrite.getMake() + " " 
-                                        + vehicleToWrite.getModel() + "\n");
-                maintenanceLateTextArea.append("Notes: " + vehicleToWrite.getDmgNotes() + "\n\n");
+                maintenanceLateTextArea.append(stringToWrite(vehicleToWrite));
             }
             else
             {
-                maintenanceSoonTextArea.append("Date due: "
-                                        + dateToString(vehicleToWrite) + "\nID #" 
-                                        + vehicleToWrite.getID() + ": "
-                                        + vehicleToWrite.getYear() + " " 
-                                        + vehicleToWrite.getMake() + " " 
-                                        + vehicleToWrite.getModel() + "\n");
-                maintenanceSoonTextArea.append("Notes: " + vehicleToWrite.getDmgNotes() + "\n\n");
+                maintenanceSoonTextArea.append(stringToWrite(vehicleToWrite));
             }
         }
+    }
+    
+    private String stringToWrite(Vehicle vehicleToWrite)
+    {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Date due: "
+                + dateToString(vehicleToWrite) + "\nID #" 
+                + vehicleToWrite.getID() + ": "
+                + vehicleToWrite.getYear() + " " 
+                + vehicleToWrite.getMake() + " " 
+                + vehicleToWrite.getModel() + "\n");
+        sb.append("Notes: " + vehicleToWrite.getDmgNotes() + "\n\n");
+        
+        return sb.toString();
     }
     
     private String dateToString(Vehicle vehicle)
